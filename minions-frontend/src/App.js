@@ -6,11 +6,17 @@ import axios from 'axios';
 class App extends Component {
 
     clickTry(){
-        axios.post("http://192.168.1.131:50000", {
+        axios.get("http://localhost:8080/logtest", {
             params:{
                 headers:'from Mac mini',
                 body: 'hope you can see it'
             }
+        }).then(function (response) {
+           if (response === 1){
+               console.log("日志记录成功")
+           } else console.log("日志记录错误")
+        }).catch(function (error) {
+            console.log(error)
         })
     }
 
