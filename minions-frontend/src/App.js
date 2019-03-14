@@ -8,8 +8,8 @@ class App extends Component {
     clickTry(){
         axios.get("http://localhost:8080/logtest", {
             params:{
-                headers:'from Mac mini',
-                body: 'hope you can see it'
+                K_topic: 'streamingtopic',
+                contents: 'hopeyoucanseeit_nihao hhh'
             }
         }).then(function (response) {
            if (response === 1){
@@ -20,11 +20,26 @@ class App extends Component {
         })
     }
 
+    clickTrySecond(){
+        axios.get("http://localhost:8080/logtest2", {
+            params:{
+                K_topic: 'hello_ladygaga_topic',
+                contents: 'hopeyoucanseeit_nihao hhh'
+            }
+        }).then(function (response) {
+            if (response === 1){
+                console.log("日志记录成功")
+            } else console.log("日志记录错误")
+        }).catch(function (error) {
+            console.log(error)
+        })
+    }
 
     render() {
         return (
             <div className="App">
                 <Button type="primary" onClick={this.clickTry}>Button</Button>
+                <Button type="primary" onClick={this.clickTrySecond}>Button</Button>
             </div>
         );
     }

@@ -26,11 +26,11 @@ public class HelloController {
 
         int res = 0;
 
-        String headers = request.getParameter("headers");
-        String body = request.getParameter("body");
+        String k_topic = request.getParameter("K_topic");
+        String contents = request.getParameter("contents");
 
         try {
-            logger.info("headers:" + headers + "body:"+ body);
+            logger.info("topic:" + k_topic + " " + "contents:"+ contents + "try:bbb");
             res = 1;
         }catch (Exception e){
             logger.error("error:" + e);
@@ -40,5 +40,27 @@ public class HelloController {
         return res;
 
     }
+
+    @GetMapping("logtest2")
+    private int logTest2(HttpServletRequest request) throws UnsupportedEncodingException {
+
+        int res = 0;
+
+        String k_topic = request.getParameter("K_topic");
+        String contents = request.getParameter("contents");
+
+        try {
+            logger.info("topic:" + k_topic + " " + "contents:"+ contents + "try:bbb");
+            res = 1;
+        }catch (Exception e){
+            logger.error("error:" + e);
+            e.printStackTrace();
+        }
+
+        return res;
+
+    }
+
+
 
 }
