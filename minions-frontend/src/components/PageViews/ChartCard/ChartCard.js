@@ -10,7 +10,10 @@ class PVChartCard extends Component{
     render() {
 
         return(
-            <div><ChartCard
+            <div>
+
+                <ChartCard
+                    bordered={false}
                 title="今日PV"
                 action={
                     <Tooltip title="页面浏览总量">
@@ -22,14 +25,14 @@ class PVChartCard extends Component{
                     <Field label="日均Page View" value={numeral(12423).format("0,0")} />
                 }
                 contentHeight={46}
-            >
+                >
                     <span>
                         周同比
                         <Trend flag="up" style={{ marginLeft: 8, color: "rgba(0,0,0,.85)" }}>
                         12%
                         </Trend>
                     </span>
-                <span style={{ marginLeft: 16 }}>
+                    <span style={{ marginLeft: 16 }}>
                         日环比
                         <Trend
                             flag="down"
@@ -38,7 +41,8 @@ class PVChartCard extends Component{
                             11%
                         </Trend>
                     </span>
-            </ChartCard></div>
+                </ChartCard>
+            </div>
         );
     }
 }

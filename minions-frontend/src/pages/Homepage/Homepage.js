@@ -37,7 +37,12 @@ class Homepage extends Component{
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1">
                             <Icon type="bar-chart" />
-                            <span>数据概览</span>
+                            <span>今日数据概览</span>
+                            <Link to='/overview'/>
+                        </Menu.Item>
+                        <Menu.Item key="4">
+                            <Icon type="area-chart" />
+                            <span>历史数据查询</span>
                             <Link to='/overview'/>
                         </Menu.Item>
                         <Menu.Item key="2">
