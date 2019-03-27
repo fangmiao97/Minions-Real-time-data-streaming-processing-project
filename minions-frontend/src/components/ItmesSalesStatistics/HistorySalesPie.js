@@ -51,7 +51,11 @@ class HistorySalesPie extends Component{
     render() {
         return(
             <div>
-                <Card title="TEST课程销售量统计" bordered={false} >
+                <Card
+                    title="TEST课程销售量统计"
+                    style={{ borderRadius:'4px 4px 4px 4px',
+                            boxShadow:'0px 0px 10px #cfcfcf'}}
+                >
                     <p
                         style={{
                             fontSize: 14,

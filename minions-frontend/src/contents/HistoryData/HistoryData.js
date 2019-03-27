@@ -42,6 +42,7 @@ class HistoryData extends Component{
                 <Row>
                     <Card
                         title="选择查看时间"
+
                     >
                     <DatePicker defaultValue={moment(this.state.date)} format={dateFormat} onChange={this.dateChange.bind(this)} allowClear={false}/>
                     </Card>

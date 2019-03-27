@@ -16,13 +16,17 @@
 }
 
 .trigger:hover {
-    color: #1890ff;
+    color: #fe2d55;
 }
 
 .logo {
     height: 32px;
     background: rgba(255,255,255,.2);
     margin: 16px;
+    padding-left: 20%;
+    font-family: "Apple Braille";
+    font-size: x-large;
+    color: #fe2d55;
 }
 
 .clock {

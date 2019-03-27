@@ -14,17 +14,17 @@ class PVChartCard extends Component{
 
                 <ChartCard
                     bordered={false}
-                title="今日PV"
-                action={
-                    <Tooltip title="页面浏览总量">
-                        <Icon type="info-circle-o" />
-                    </Tooltip>
-                }
-                total={1233}
-                footer={
-                    <Field label="日均Page View" value={numeral(12423).format("0,0")} />
-                }
-                contentHeight={46}
+                    title="今日PV"
+                    action={
+                      <Tooltip title="页面浏览总量">
+                          <Icon type="info-circle-o" />
+                       </Tooltip>
+                    }
+                     total={1233}
+                     footer={
+                        <Field label="日均Page View" value={numeral(12423).format("0,0")} />
+                     }
+                    contentHeight={46}
                 >
                     <span>
                         周同比

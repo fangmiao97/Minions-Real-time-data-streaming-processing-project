@@ -5,16 +5,11 @@ module.exports = override(
         libraryName: 'antd',
         libraryDirectory: 'es',
         style: true,
-    },
-        {
-            libraryName: 'ant-design-pro',
-            libraryDirectory: 'lib',
-            style: true,
-            camel2DashComponentName: false,
-        }),
+    }),
+    addLessLoader({
+        javascriptEnabled: true,
+        modifyVars:{'@primary-color': '#fe2d55',
+                    '@font-size-base': '16px'}
+    })
 );
 
-addLessLoader({
-    javascriptEnabled: true,
-    modifyVars:{'@primary-color': '#35ce7b'}
-})

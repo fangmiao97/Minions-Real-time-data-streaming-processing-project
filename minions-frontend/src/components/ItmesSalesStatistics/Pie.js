@@ -46,7 +46,7 @@ class ItemSalesPie extends Component{
     render() {
         return(
             <div>
-                <Card title="TEST课程销售量统计" bordered={false} >
+                <Card title="TEST课程销售量统计" bordered={false}>
                     <p
                         style={{
                             fontSize: 14,

@@ -4,7 +4,6 @@ import "./Homepage.css";
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import Overview from "../../contents/Overview/Overview";
-import BrowseAnalysis from "../../contents/BrowseAnalysis/BrowseAnalysis";
 import Clock from 'react-live-clock';
 import App from "../../App";
 import HistoryData from "../../contents/HistoryData/HistoryData";
@@ -51,12 +50,14 @@ class Homepage extends Component{
                     trigger={null}
                     collapsible
                     collapsed={this.state.collapsed}
+                    width={240}
+                    style={{ background: '#fff', boxShadow:'2px 0px 3px #cfcfcf'}}
                 >
                     <div className="logo">
                         MINIONS
                     </div>
 
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+                    <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1">
                             <Icon type="bar-chart" />
                             <span>今日数据概览</span>
@@ -84,9 +85,9 @@ class Homepage extends Component{
                         </SubMenu>
                     </Menu>
                 </Sider>
-                <Layout>
-                    <div>
-                    <Header style={{ background: '#fff', padding: 0 }}>
+                <Layout style={{background:'#f2f2f2'}}>
+                    <div  style={{ height: '100%'}}>
+                    <Header style={{ background: '#fff', padding: 0 ,borderBottom:'solid 2px #cfcfcf'}}>
                         <Icon
                             className="trigger"
                             type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
@@ -99,7 +100,7 @@ class Homepage extends Component{
                             interval={1000} />
                     </Header>
                     <Content style={{
-                        margin: '16px 16px', padding: 12 , minHeight: 280,
+                        margin: '16px 16px', padding: 12 , minHeight: 280
                     }}
                     >
                         <Route exact path='/' component={Overview}/>
@@ -108,7 +109,9 @@ class Homepage extends Component{
                         <Route path='/browseanalysis' component={App}/>
                     </Content>
                     </div>
+                    <div style={{ marginBottom:0}}>
                     <GlobalFooter links={links} copyright={copyright} />
+                    </div>
                 </Layout>
             </Layout>
 
