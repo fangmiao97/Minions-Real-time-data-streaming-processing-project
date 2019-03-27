@@ -46,7 +46,7 @@ class HistorySalesPie extends Component{
     componentWillMount() {
         this.getHistorySalesData(this.state.date)
     }
-    
+
 
     render() {
         return(
