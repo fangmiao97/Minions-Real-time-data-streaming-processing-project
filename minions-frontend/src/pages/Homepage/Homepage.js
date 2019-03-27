@@ -4,6 +4,8 @@ import "./Homepage.css";
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import Overview from "../../contents/Overview/Overview";
 import BrowseAnalysis from "../../contents/BrowseAnalysis/BrowseAnalysis";
+import Clock from 'react-live-clock';
+import App from "../../App";
 
 const { Header, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -69,6 +71,11 @@ class Homepage extends Component{
                             type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.toggle}
                         />
+                        <Clock
+                            className="clock"
+                            format="HH:mm:ss"
+                            ticking={true}
+                            interval={1000} />
                     </Header>
                     <Content style={{
                         margin: '24px 16px', padding: 24 , minHeight: 280,
@@ -76,7 +83,7 @@ class Homepage extends Component{
                     >
                         <Route exact path='/' component={Overview}/>
                         <Route path='/overview' component={Overview}/>
-                        <Route path='/browseanalysis' component={BrowseAnalysis}/>
+                        <Route path='/browseanalysis' component={App}/>
                     </Content>
                 </Layout>
             </Layout>

@@ -11,9 +11,10 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "numeral": "^2.0.6",
-    "react": "^16.8.4",
+    "react": "^16.8.5",
     "react-app-rewired": "^2.1.0",
     "react-dom": "^16.8.4",
+    "react-live-clock": "^3.1.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },

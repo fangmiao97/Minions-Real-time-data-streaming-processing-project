@@ -74,23 +74,7 @@ public class HelloController {
 
     }
 
-    @GetMapping("htest")
-    private List<PieChartDTO> getHBaseTest() throws IOException {
 
-        List<PieChartDTO>list = new ArrayList<>();
-
-        Map<String, Long> map = testDAO.query("20190226");
-
-        for (Map.Entry<String, Long> entry : map.entrySet()) {
-            PieChartDTO model = new PieChartDTO();
-            model.setX(entry.getKey());
-            model.setY(Math.toIntExact(entry.getValue()));
-            list.add(model);
-        }
-
-        return list;
-
-    }
 
 
 

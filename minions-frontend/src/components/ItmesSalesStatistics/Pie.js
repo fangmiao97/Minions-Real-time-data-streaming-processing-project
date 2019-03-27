@@ -19,7 +19,7 @@ class ItemSalesPie extends Component{
     getSalesData(){
         let _this = this;
 
-        axios.get("http://localhost:8080/htest")
+        axios.get("http://localhost:8080/itemSaleStatisticsInOverview")
             .then(function (response) {
                 _this.setState({
                     salesPieData: response.data
@@ -30,6 +30,18 @@ class ItemSalesPie extends Component{
 
     componentWillMount() {
         this.getSalesData()
+    }
+
+    /**
+     * 60秒刷新一次
+     */
+    componentDidMount() {
+        this.timer = setInterval(
+            () => {
+                this.getSalesData();
+            },
+            60000
+        );
     }
 
     render() {
@@ -47,8 +59,8 @@ class ItemSalesPie extends Component{
                     </p>
                     <Pie
                         hasLegend = {true}
-                        title="销售额"
-                        subTitle="销售额"
+                        title="销售量"
+                        subTitle="销售量"
                         total={() => (
                             <span
                                 dangerouslySetInnerHTML={{
