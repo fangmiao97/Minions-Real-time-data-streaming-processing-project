@@ -85,6 +85,7 @@ class Homepage extends Component{
                     </Menu>
                 </Sider>
                 <Layout>
+                    <div>
                     <Header style={{ background: '#fff', padding: 0 }}>
                         <Icon
                             className="trigger"
@@ -106,6 +107,7 @@ class Homepage extends Component{
                         <Route path='/history' component={HistoryData}/>
                         <Route path='/browseanalysis' component={App}/>
                     </Content>
+                    </div>
                     <GlobalFooter links={links} copyright={copyright} />
                 </Layout>
             </Layout>
