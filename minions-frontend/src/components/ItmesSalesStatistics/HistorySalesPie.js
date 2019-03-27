@@ -5,20 +5,26 @@ import { Card } from 'antd'
 import 'ant-design-pro/dist/ant-design-pro.css';
 import axios from 'axios';
 
-class ItemSalesPie extends Component{
+class HistorySalesPie extends Component{
 
     constructor(props) {
         super(props);
 
         this.state = {
+
+            date:this.props.date,
             salesPieData:[]
         }
     }
 
-    getSalesData(){
+    getHistorySalesData(date){
         let _this = this;
 
-        axios.get("http://localhost:8080/itemSaleStatisticsInOverview")
+        axios.get("http://localhost:8080/getHistorySalesData",{
+            params:{
+                date: date
+            }
+        })
             .then(function (response) {
                 _this.setState({
                     salesPieData: response.data
@@ -27,21 +33,20 @@ class ItemSalesPie extends Component{
             })
     }
 
-    componentWillMount() {
-        this.getSalesData()
+    componentWillReceiveProps(nextProps) {
+        if(this.state.date !== nextProps.date) {
+            this.setState({
+                date:nextProps.date
+            },() => {
+                this.getHistorySalesData(nextProps.date)
+            })
+        }
     }
 
-    /**
-     * 60秒刷新一次
-     */
-    componentDidMount() {
-        this.timer = setInterval(
-            () => {
-                this.getSalesData();
-            },
-            600000
-        );
+    componentWillMount() {
+        this.getHistorySalesData(this.state.date)
     }
+    
 
     render() {
         return(
@@ -79,4 +84,4 @@ class ItemSalesPie extends Component{
 
 }
 
-export default ItemSalesPie;
+export default HistorySalesPie;

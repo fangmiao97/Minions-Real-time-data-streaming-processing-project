@@ -1,14 +1,34 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import "./Homepage.css";
+import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import Overview from "../../contents/Overview/Overview";
 import BrowseAnalysis from "../../contents/BrowseAnalysis/BrowseAnalysis";
 import Clock from 'react-live-clock';
 import App from "../../App";
+import HistoryData from "../../contents/HistoryData/HistoryData";
 
 const { Header, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
+
+const links = [{
+    key: '帮助',
+    title: '帮助',
+    href: '',
+}, {
+    key: 'github',
+    title: <Icon type="github" />,
+    href: 'https://github.com/fangmiao97/Minions-Real-time-data-streaming-processing-project',
+    blankTarget: true,
+}, {
+    key: '条款',
+    title: '条款',
+    href: '',
+    blankTarget: true,
+}];
+
+const copyright = <div>Copyright <Icon type="copyright" /> 2019 HFUTer Fang Miao's Graduation Design - Minions</div>;
 
 class Homepage extends Component{
 
@@ -45,7 +65,7 @@ class Homepage extends Component{
                         <Menu.Item key="4">
                             <Icon type="area-chart" />
                             <span>历史数据查询</span>
-                            <Link to='/overview'/>
+                            <Link to='/history'/>
                         </Menu.Item>
                         <Menu.Item key="2">
                             <Icon type="fund" />
@@ -73,20 +93,23 @@ class Homepage extends Component{
                         />
                         <Clock
                             className="clock"
-                            format="HH:mm:ss"
+                            format="YYYY.MM.DD HH:mm:ss"
                             ticking={true}
                             interval={1000} />
                     </Header>
                     <Content style={{
-                        margin: '24px 16px', padding: 24 , minHeight: 280,
+                        margin: '16px 16px', padding: 12 , minHeight: 280,
                     }}
                     >
                         <Route exact path='/' component={Overview}/>
                         <Route path='/overview' component={Overview}/>
+                        <Route path='/history' component={HistoryData}/>
                         <Route path='/browseanalysis' component={App}/>
                     </Content>
+                    <GlobalFooter links={links} copyright={copyright} />
                 </Layout>
             </Layout>
+
             </Router>
             </div>
         );
