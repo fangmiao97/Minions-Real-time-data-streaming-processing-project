@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f620294-a4d1-4e9e-b57a-a88077e4260d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../minions-backend/src/main/java/com/chaoyue/minions/controller/OverviewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../minions-backend/src/main/java/com/chaoyue/minions/dao/OverviewDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/minions.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../minions-backend/src/main/java/com/chaoyue/minions/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../minions-backend/src/main/java/com/chaoyue/minions/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ItmesSalesStatistics/Pie.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ItmesSalesStatistics/Pie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Homepage/Homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Homepage/Homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Homepage/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Homepage/Homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../minions-backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../minions-backend/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/ItmesSalesStatistics/Pie.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="281">
-              <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+              <caret line="61" column="34" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -325,6 +314,11 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -356,12 +350,12 @@
       <workItem from="1553220559950" duration="10961000" />
       <workItem from="1553237452932" duration="221000" />
       <workItem from="1553312495028" duration="6897000" />
-      <workItem from="1553594319788" duration="3815000" />
+      <workItem from="1553594319788" duration="4199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40685000" />
+    <option name="totallyTimeSpent" value="41069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -565,7 +559,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/ItmesSalesStatistics/Pie.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
-          <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+          <caret line="61" column="34" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
