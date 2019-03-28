@@ -4,6 +4,7 @@ import 'ant-design-pro/dist/ant-design-pro.css';
 import PVChartCard from "../../components/PageViews/ChartCard/ChartCard";
 import moment from "moment";
 import ClickCountPie from "../../components/ClickCountStatistics/ClickCountPie";
+import TopReferWebList from "../../components/ReferenceStatistics/TopReferWebList";
 
 /**
  * Overview页布局
@@ -32,6 +33,7 @@ class Overview extends Component{
                 </Col>
                 <Col span={6}>
                     <PVChartCard date={this.state.date}/>
+                    <TopReferWebList date={this.state.date}/>
                 </Col>
             </Row>
             </div>

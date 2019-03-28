@@ -55,7 +55,7 @@ class PVChartCard extends Component{
     render() {
 
         return(
-            <div style={{ marginLeft:'32px'}}>
+            <div style={{ marginLeft:'32px', marginTop:'32px'}}>
                 <ChartCard
                     title="今日PV"
                     action={

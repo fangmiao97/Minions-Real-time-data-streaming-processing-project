@@ -13,8 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * imooc_course_search_clickcount的DAO
@@ -28,9 +27,11 @@ public class SearchClickCountDAO {
     private static String tablename = "imooc_course_search_clickcount";
 
 
+
     public Map<String, Long> getTopReferWebsList(String date) throws IOException {
 
         Map<String, Long> res = new HashMap<>();
+
 
         HTable table = hBaseUtils.getTable(tablename);
 
@@ -61,6 +62,7 @@ public class SearchClickCountDAO {
         }
 
         scanner.close();
+
 
         return res;
     }

@@ -1,6 +1,7 @@
 package com.chaoyue.minions.controller;
 
 import com.chaoyue.minions.DTO.PieChartDTO;
+import com.chaoyue.minions.DTO.TopReferWebListDTO;
 import com.chaoyue.minions.dao.ClickCountDAO;
 import com.chaoyue.minions.dao.SearchClickCountDAO;
 import com.jcraft.jsch.MAC;
@@ -66,15 +67,23 @@ public class DataQueryController {
     }
 
     @GetMapping("getTopWebList")
-    private Map<String, Long> getTopWebList() throws IOException {
-        Map<String, Long> res = new HashMap<>();
+    private List<TopReferWebListDTO> getTopWebList(HttpServletRequest request) throws IOException {
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-        Date date = new Date();
-        String today = simpleDateFormat.format(date);
+        List<TopReferWebListDTO> res = new ArrayList<>();
 
-        res = searchClickCountDAO.getTopReferWebsList(today);
+        String date = request.getParameter("date");
 
+        Map<String, Long> map = searchClickCountDAO.getTopReferWebsList(date);
+
+        int rank = 1;
+        for(Map.Entry<String, Long> entry : map.entrySet()) {
+            TopReferWebListDTO item = new TopReferWebListDTO();
+            item.setRank(rank);
+            rank++;
+            item.setWebsite(entry.getKey());
+            item.setCount(Math.toIntExact(entry.getValue()));
+            res.add(item);
+        }
 
         return res;
     }

@@ -85,7 +85,7 @@ class Homepage extends Component{
                             style={{ marginLeft:'32px', fontWeight:'500'}}/>
                     </Header>
                     <Content style={{
-                        margin: '16px 16px', padding: 12 , minHeight: 280
+                        // margin: '16px 16px', padding: 12 , minHeight: 280
                     }}
                     >
                         <Route exact path='/' component={Overview}/>
