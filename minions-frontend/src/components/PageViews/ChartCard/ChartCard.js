@@ -4,28 +4,72 @@ import 'ant-design-pro/dist/ant-design-pro.css';
 import { ChartCard, yuan, Field } from 'ant-design-pro/lib/Charts';
 import Trend from 'ant-design-pro/lib/Trend';
 import numeral from 'numeral';
+import axios from 'axios';
+
 
 class PVChartCard extends Component{
+
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+
+            date: this.props.date,
+            total: 0
+        }
+    }
+
+    getPVByDate(date) {
+
+        let _this = this;
+
+        axios.get("http://localhost:8080/getPVData", {
+            params:{
+                date: date
+            }
+        }).then(function (response) {
+            _this.setState({
+                total:response.data
+            });
+            console.log(response.data)
+        })
+    }
+
+    componentWillMount() {
+        this.getPVByDate(this.state.date)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(this.state.date !== nextProps.date) {
+            this.setState({
+                date:nextProps.date
+            },() => {
+                this.getPVByDate(nextProps.date)
+            })
+        }
+    }
+
+
 
     render() {
 
         return(
-            <div>
-
+            <div style={{ marginLeft:'32px'}}>
                 <ChartCard
-                    bordered={false}
                     title="今日PV"
                     action={
                       <Tooltip title="页面浏览总量">
                           <Icon type="info-circle-o" />
                        </Tooltip>
                     }
-                     total={1233}
+                     total={this.state.total}
                      footer={
                         <Field label="日均Page View" value={numeral(12423).format("0,0")} />
                      }
                     contentHeight={46}
-                >
+                    style={{ borderRadius:'4px 4px 4px 4px',
+                        boxShadow:'0px 0px 5px #cfcfcf'}}>
                     <span>
                         周同比
                         <Trend flag="up" style={{ marginLeft: 8, color: "rgba(0,0,0,.85)" }}>

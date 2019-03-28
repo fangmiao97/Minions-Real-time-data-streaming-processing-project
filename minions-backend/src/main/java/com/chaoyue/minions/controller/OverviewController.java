@@ -25,8 +25,8 @@ public class OverviewController {
     @Autowired
     private ClickCountDAO clickCountDAO;
 
-    @GetMapping("itemSaleStatisticsInOverview")
-    private List<PieChartDTO> getHBaseTest() throws IOException {
+    @GetMapping("getTodayClickData")
+    private List<PieChartDTO> getTodayClickData() throws IOException {
 
         List<PieChartDTO>list = new ArrayList<>();
 
@@ -34,7 +34,7 @@ public class OverviewController {
         Date date = new Date();
         String today = simpleDateFormat.format(date);
 
-        Map<String, Long> map = clickCountDAO.query(today);
+        Map<String, Long> map = clickCountDAO.queryClickCountByDate(today);
 
         for (Map.Entry<String, Long> entry : map.entrySet()) {
             PieChartDTO model = new PieChartDTO();
@@ -45,5 +45,17 @@ public class OverviewController {
 
         return list;
 
+    }
+
+    @GetMapping("getTodayPV")
+    private int getTodayPV() throws IOException {
+        int res = 0;
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String today = simpleDateFormat.format(date);
+
+        res = (int) clickCountDAO.getPageViewsByDate(today);
+        return res;
     }
 }

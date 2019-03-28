@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * HBase操作工具类，java工具类建议采用单例模式封装
+ * created by Chaoyue
  */
 
 @Component
@@ -61,46 +62,16 @@ public class HBaseUtils {
         return table;
     }
 
-    /**
-     * 根据表名和输入条件获取HBase记录
-     * @param tableName
-     * @param condition
-     * @return
-     * @throws IOException
-     */
-    public Map<String, Long> query(String tableName, String condition) throws IOException {
 
-        Map<String, Long> map = new HashMap<>();
-
-        HTable table = getTable(tableName);
-        String cf = "info";
-        String qualifier = "click_count";
-
-        Scan scan = new Scan();
-
-        Filter filter = new PrefixFilter(Bytes.toBytes(condition));
-        scan.setFilter(filter);
-
-        ResultScanner rs = table.getScanner(scan);
-
-        for (Result result : rs) {
-            String row = Bytes.toString(result.getRow());
-            long clickCount = Bytes.toLong(result.getValue(cf.getBytes(), qualifier.getBytes()));
-            map.put(row, clickCount);
-        }
-
-        return map;
-    }
-
-    public static void main(String[] args) throws IOException {
-
-        Map<String, Long> map = HBaseUtils.getInstance().query("imooc_course_clickcount", "20190226");
-
-        for (Map.Entry<String, Long> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-        }
-
-
-    }
+//    public static void main(String[] args) throws IOException {
+//
+//        Map<String, Long> map = HBaseUtils.getInstance().query("imooc_course_clickcount", "20190226");
+//
+//        for (Map.Entry<String, Long> entry : map.entrySet()) {
+//            System.out.println(entry.getKey() + " : " + entry.getValue());
+//        }
+//
+//
+//    }
 
 }

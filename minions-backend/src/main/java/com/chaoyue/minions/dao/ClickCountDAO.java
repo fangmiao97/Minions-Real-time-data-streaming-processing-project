@@ -29,15 +29,21 @@ public class ClickCountDAO {
 
     private static String tablename = "imooc_course_clickcount";
 
-    public Map<String, Long> query( String condition) throws IOException {
+    /**
+     * rowkey前缀过滤查询
+     * @param condition
+     * @return
+     * @throws IOException
+     */
+    public Map<String, Long> queryClickCountByDate(String condition) throws IOException {
 
         Map<String, Long> map = new HashMap<>();
 
         HTable table = hBaseUtils.getTable(tablename);
 
         //ATTENTION!!!
-        String cf = "info";
-        String qualifier = "click_count";
+        String cf = "info"; //column family
+        String qualifier = "click_count"; //qualifier--similar to column name
 
         Scan scan = new Scan();
 
@@ -52,8 +58,33 @@ public class ClickCountDAO {
             map.put(row, clickCount);
         }
 
+        rs.close();
+
         return map;
     }
 
+    public long getPageViewsByDate(String condition) throws IOException {
+        long res = 0;
+
+        HTable table = hBaseUtils.getTable(tablename);
+
+        String cf = "info";
+        String qualifier = "click_count";
+
+        Scan scan = new Scan();
+
+        Filter filter = new PrefixFilter(Bytes.toBytes(condition));
+        scan.setFilter(filter);
+
+        ResultScanner rs = table.getScanner(scan);
+
+        for (Result result : rs) {
+            res += Bytes.toLong(result.getValue(cf.getBytes(), qualifier.getBytes()));
+        }
+
+        rs.close();
+
+        return res;
+    }
 
 }

@@ -31,15 +31,6 @@ const copyright = <div>Copyright <Icon type="copyright" /> 2019 HFUTer Fang Miao
 
 class Homepage extends Component{
 
-    state = {
-        collapsed: false,
-    };
-
-    toggle = () => {
-        this.setState({
-            collapsed: !this.state.collapsed,
-        });
-    }
 
     render() {
         return (
@@ -48,8 +39,6 @@ class Homepage extends Component{
             <Layout style={{ height: '100%'}}>
                 <Sider
                     trigger={null}
-                    collapsible
-                    collapsed={this.state.collapsed}
                     width={240}
                     style={{ background: '#fff', boxShadow:'2px 0px 3px #cfcfcf'}}
                 >
@@ -88,16 +77,12 @@ class Homepage extends Component{
                 <Layout style={{background:'#f2f2f2'}}>
                     <div  style={{ height: '100%'}}>
                     <Header style={{ background: '#fff', padding: 0 ,borderBottom:'solid 2px #cfcfcf'}}>
-                        <Icon
-                            className="trigger"
-                            type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                            onClick={this.toggle}
-                        />
                         <Clock
                             className="clock"
                             format="YYYY.MM.DD HH:mm:ss"
                             ticking={true}
-                            interval={1000} />
+                            interval={1000}
+                            style={{ marginLeft:'32px', fontWeight:'500'}}/>
                     </Header>
                     <Content style={{
                         margin: '16px 16px', padding: 12 , minHeight: 280

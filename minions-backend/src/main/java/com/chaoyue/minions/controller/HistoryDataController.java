@@ -33,14 +33,14 @@ public class HistoryDataController {
      * @return
      * @throws IOException
      */
-    @GetMapping("getHistorySalesData")
-    private List<PieChartDTO> getHistorySalesData(HttpServletRequest request) throws IOException {
+    @GetMapping("getHistoryClickData")
+    private List<PieChartDTO> getHistoryClickData(HttpServletRequest request) throws IOException {
 
         String date = request.getParameter("date");
 
         List<PieChartDTO>list = new ArrayList<>();
 
-        Map<String, Long> map = clickCountDAO.query(date);
+        Map<String, Long> map = clickCountDAO.queryClickCountByDate(date);
 
         for (Map.Entry<String, Long> entry : map.entrySet()) {
             PieChartDTO model = new PieChartDTO();
@@ -52,4 +52,15 @@ public class HistoryDataController {
         return list;
 
     }
+
+    @GetMapping("getPVData")
+    private int getTodayPV(HttpServletRequest request) throws IOException {
+        int res = 0;
+
+        String date = request.getParameter("date");
+
+        res = (int) clickCountDAO.getPageViewsByDate(date);
+        return res;
+    }
+
 }

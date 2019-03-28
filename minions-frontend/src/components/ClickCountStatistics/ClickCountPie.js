@@ -5,7 +5,7 @@ import { Card } from 'antd'
 import 'ant-design-pro/dist/ant-design-pro.css';
 import axios from 'axios';
 
-class HistorySalesPie extends Component{
+class ClickCountPie extends Component{
 
     constructor(props) {
         super(props);
@@ -20,7 +20,7 @@ class HistorySalesPie extends Component{
     getHistorySalesData(date){
         let _this = this;
 
-        axios.get("http://localhost:8080/getHistorySalesData",{
+        axios.get("http://localhost:8080/getHistoryClickData",{
             params:{
                 date: date
             }
@@ -54,7 +54,7 @@ class HistorySalesPie extends Component{
                 <Card
                     title="TEST课程销售量统计"
                     style={{ borderRadius:'4px 4px 4px 4px',
-                            boxShadow:'0px 0px 10px #cfcfcf'}}
+                            boxShadow:'0px 0px 5px #cfcfcf'}}
                 >
                     <p
                         style={{
@@ -88,4 +88,4 @@ class HistorySalesPie extends Component{
 
 }
 
-export default HistorySalesPie;
+export default ClickCountPie;

@@ -4,8 +4,7 @@ import { DatePicker } from 'antd';
 import moment from 'moment';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import PVChartCard from "../../components/PageViews/ChartCard/ChartCard";
-import ItemSalesPie from "../../components/ItmesSalesStatistics/Pie";
-import HistorySalesPie from "../../components/ItmesSalesStatistics/HistorySalesPie";
+import ClickCountPie from "../../components/ClickCountStatistics/ClickCountPie";
 
 /**
  * HistoryData页布局
@@ -42,18 +41,19 @@ class HistoryData extends Component{
                 <Row>
                     <Card
                         title="选择查看时间"
-
+                        style={{ borderRadius:'4px 4px 4px 4px',
+                            boxShadow:'0px 0px 5px #cfcfcf'}}
                     >
                     <DatePicker defaultValue={moment(this.state.date)} format={dateFormat} onChange={this.dateChange.bind(this)} allowClear={false}/>
                     </Card>
                 </Row>
-                <Row style={{ marginTop:'16px'}}>
+                <Row style={{ marginTop:'32px'}}>
                     <Col span={6}>
-                        <HistorySalesPie date={this.state.selectedDate}/>
+                        <ClickCountPie date={this.state.selectedDate}/>
 
                     </Col>
-                    <Col span={6} offset={1}>
-                        <PVChartCard/>
+                    <Col span={6}>
+                        <PVChartCard date={this.state.selectedDate}/>
                     </Col>
                 </Row>
             </div>
