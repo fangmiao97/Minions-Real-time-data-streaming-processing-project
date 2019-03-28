@@ -26,7 +26,6 @@ public class ClickCountDAO {
     @Autowired
     private HBaseUtils hBaseUtils;
 
-
     private static String tablename = "imooc_course_clickcount";
 
     /**

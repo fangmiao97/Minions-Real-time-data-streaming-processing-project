@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Charts from 'ant-design-pro/lib/Charts';
 import { Pie, yuan } from 'ant-design-pro/lib/Charts';
 import { Card } from 'antd'
 import 'ant-design-pro/dist/ant-design-pro.css';
@@ -20,7 +19,7 @@ class ClickCountPie extends Component{
     getHistorySalesData(date){
         let _this = this;
 
-        axios.get("http://localhost:8080/getHistoryClickData",{
+        axios.get("http://localhost:8080/getClickData",{
             params:{
                 date: date
             }
