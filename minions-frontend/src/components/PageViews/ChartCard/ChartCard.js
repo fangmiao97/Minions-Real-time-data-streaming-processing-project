@@ -5,6 +5,7 @@ import { ChartCard, yuan, Field } from 'ant-design-pro/lib/Charts';
 import Trend from 'ant-design-pro/lib/Trend';
 import numeral from 'numeral';
 import axios from 'axios';
+import Utils from "../../../utils/axiospath"
 
 
 class PVChartCard extends Component{
@@ -24,7 +25,7 @@ class PVChartCard extends Component{
 
         let _this = this;
 
-        axios.get("http://localhost:8080/getPVData", {
+        axios.get(Utils.defaultURIdefaultURI+"/getPVData", {
             params:{
                 date: date
             }

@@ -27,11 +27,11 @@ class Overview extends Component{
         return(
             <div>
             <Row>
-                <Col span={6}>
+                <Col span={8}>
                     <ClickCountPie date={this.state.date}/>
 
                 </Col>
-                <Col span={6}>
+                <Col span={8}>
                     <PVChartCard date={this.state.date}/>
                     <TopReferWebList date={this.state.date}/>
                 </Col>

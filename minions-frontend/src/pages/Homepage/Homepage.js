@@ -5,8 +5,8 @@ import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import Overview from "../../contents/Overview/Overview";
 import Clock from 'react-live-clock';
-import App from "../../App";
 import HistoryData from "../../contents/HistoryData/HistoryData";
+import BrowseAnalysis from "../../contents/BrowseAnalysis/BrowseAnalysis";
 
 const { Header, Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -64,7 +64,8 @@ class Homepage extends Component{
                         </Menu.Item>
                         <Menu.Item key="3">
                             <Icon type="radar-chart" />
-                            <span>页面行为分析</span>
+                            <span>页面行为分析Mock</span>
+                            <Link to='/browseanalysis'/>
                         </Menu.Item>
                         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
                             <Menu.Item key="11">Option 1</Menu.Item>
@@ -74,7 +75,7 @@ class Homepage extends Component{
                         </SubMenu>
                     </Menu>
                 </Sider>
-                <Layout style={{background:'#f2f2f2'}}>
+                <Layout style={{background:'#eeeef2'}}>
                     <div  style={{ height: '100%'}}>
                     <Header style={{ background: '#fff', padding: 0 ,borderBottom:'solid 2px #cfcfcf'}}>
                         <Clock
@@ -91,7 +92,7 @@ class Homepage extends Component{
                         <Route exact path='/' component={Overview}/>
                         <Route path='/overview' component={Overview}/>
                         <Route path='/history' component={HistoryData}/>
-                        <Route path='/browseanalysis' component={App}/>
+                        <Route path='/browseanalysis' component={BrowseAnalysis}/>
                     </Content>
                     </div>
                     <div style={{ marginBottom:0}}>

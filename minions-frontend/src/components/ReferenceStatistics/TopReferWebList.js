@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { List, Typography, Card, Avatar } from 'antd';
 import axios from 'axios';
+import Utils from "../../utils/axiospath"
 
 class TopReferWebList extends Component{
 
@@ -17,7 +18,7 @@ class TopReferWebList extends Component{
 
         let _this = this;
 
-        axios.get("http://localhost:8080/getTopWebList", {
+        axios.get(Utils.defaultURIdefaultURI+"/getTopWebList", {
             params:{
                 date: date
             }

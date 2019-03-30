@@ -3,6 +3,7 @@ import { Pie, yuan } from 'ant-design-pro/lib/Charts';
 import { Card } from 'antd'
 import 'ant-design-pro/dist/ant-design-pro.css';
 import axios from 'axios';
+import Utils from "../../utils/axiospath"
 
 class ClickCountPie extends Component{
 
@@ -19,7 +20,7 @@ class ClickCountPie extends Component{
     getHistorySalesData(date){
         let _this = this;
 
-        axios.get("http://localhost:8080/getClickData",{
+        axios.get(Utils.defaultURIdefaultURI+"/getClickData",{
             params:{
                 date: date
             }

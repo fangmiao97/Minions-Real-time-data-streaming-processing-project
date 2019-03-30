@@ -1,0 +1,26 @@
+.position {
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-right: 3px;
+    padding-top: 16px;
+    padding-left: 32px;
+    background-color: #ffffff;
+}
+
+.title1{
+    color: #fe2d55;
+    font-weight: 600;
+    font-size: medium;
+}
+
+.title2 {
+    font-weight: 600;
+    font-size: x-large;
+}
+
+.title3 {
+    margin-top: 16px;
+    color: #8d8d92;
+    font-size: medium;
+    font-weight: 500;
+}
