@@ -36,7 +36,7 @@ class Homepage extends Component{
         return (
             <div className="page">
             <Router>
-            <Layout style={{ height: '100%'}}>
+            <Layout style={{height:'100%'}}>
                 <Sider
                     trigger={null}
                     width={240}
@@ -93,15 +93,14 @@ class Homepage extends Component{
                         <Route path='/overview' component={Overview}/>
                         <Route path='/history' component={HistoryData}/>
                         <Route path='/browseanalysis' component={BrowseAnalysis}/>
+                        <GlobalFooter links={links} copyright={copyright} />
                     </Content>
-                    </div>
-                    <div style={{ marginBottom:0}}>
-                    <GlobalFooter links={links} copyright={copyright} />
                     </div>
                 </Layout>
             </Layout>
 
             </Router>
+
             </div>
         );
     }

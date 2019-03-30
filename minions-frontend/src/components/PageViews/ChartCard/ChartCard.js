@@ -51,6 +51,15 @@ class PVChartCard extends Component{
         }
     }
 
+    componentDidMount() {
+        this.timer = setInterval(
+            () => {
+                this.getPVByDate(this.state.date)
+            },
+            60000
+        );
+    }
+
 
 
     render() {

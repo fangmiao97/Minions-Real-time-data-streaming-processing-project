@@ -5,3 +5,13 @@
     background-color: #fff;
     flex-wrap: wrap;
 }
+
+.miniTitle {
+    font-size: x-large;
+    font-weight: bolder;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-left: 16px;
+    padding-top: 32px;
+    background-color: #fff;
+}

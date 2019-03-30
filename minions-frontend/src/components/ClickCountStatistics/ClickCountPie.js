@@ -47,6 +47,15 @@ class ClickCountPie extends Component{
         this.getHistorySalesData(this.state.date)
     }
 
+    componentDidMount() {
+        this.timer = setInterval(
+            () => {
+                this.getHistorySalesData(this.state.date)
+            },
+            60000
+        );
+    }
+
 
     render() {
         return(

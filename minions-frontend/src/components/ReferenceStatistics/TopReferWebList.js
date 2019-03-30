@@ -26,7 +26,6 @@ class TopReferWebList extends Component{
             _this.setState({
                 topWebList: response.data
             });
-            console.log(response.data)
         })
     }
 
@@ -42,6 +41,15 @@ class TopReferWebList extends Component{
                 this.getTopReferWebDate(nextProps.date)
             })
         }
+    }
+
+    componentDidMount() {
+        this.timer = setInterval(
+            () => {
+                this.getTopReferWebDate(this.state.date)
+            },
+            60000
+        );
     }
 
 
