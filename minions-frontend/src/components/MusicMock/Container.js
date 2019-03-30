@@ -1,17 +1,23 @@
 import React, {Component} from 'react';
 import MockSongComponent from "./Song";
-import { Row } from 'antd';
+import { Row, Col } from 'antd';
 import "./Container.css";
+import Overview from "../../contents/Overview/Overview";
 
 class MusicWebMockContainer extends Component{
 
     render() {
         return (
-            <div >
-                <Row>
+            <div className="basement">
                     <MockSongComponent/>
                     <MockSongComponent/>
-                </Row>
+                <MockSongComponent/>
+                <MockSongComponent/>
+                <MockSongComponent/>
+                <MockSongComponent/>
+                <MockSongComponent/>
+                <MockSongComponent/>
+                <MockSongComponent/>
             </div>
         );
     }

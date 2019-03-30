@@ -50,12 +50,11 @@ class BrowseAnalysis extends Component{
                 <Row>
                     <MusicWebMockTitle/>
                 </Row>
-                <Row>
                     <MusicWebMockContainer/>
                     <Button type="primary" onClick={this.clickHelloTest}>hello</Button>
                     <Button type="primary" onClick={this.clickTry}>SMButton</Button>
                     <Button type="primary" onClick={this.clickTrySecond}>LGButton</Button>
-                </Row>
+
             </div>
         );
     }

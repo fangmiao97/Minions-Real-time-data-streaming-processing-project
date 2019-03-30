@@ -9,7 +9,7 @@ class MockSongComponent extends Component{
 
     render() {
         return(
-            <div>
+            <div style={{ marginLeft:32, marginTop:32}}>
               <Card
                   style={{width: 200}}
               cover={<img src="https://wx3.sinaimg.cn/mw1024/6a49516fly1g1ks3pae6sj20go0gowfv.jpg"/>}

@@ -1,5 +1,7 @@
 .basement {
+    display: flex;
     margin-left: 3px;
     margin-right: 3px;
-    float: left;
+    background-color: #fff;
+    flex-wrap: wrap;
 }
