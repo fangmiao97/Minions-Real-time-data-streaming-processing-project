@@ -11,8 +11,8 @@ class MockSongComponent extends Component{
         return(
             <div>
               <Card
-                  style={{width: '200px'}}
-              cover={<img height='200px' src="https://wx3.sinaimg.cn/mw1024/6a49516fly1g1ks3pae6sj20go0gowfv.jpg"/>}
+                  style={{width: 200}}
+              cover={<img src="https://wx3.sinaimg.cn/mw1024/6a49516fly1g1ks3pae6sj20go0gowfv.jpg"/>}
               actions={[<Icon type="play-circle" theme="twoTone" />, <Icon type="heart" theme="twoTone" />, <Icon type="edit" theme="twoTone" />]}>
                   <Meta
                       title="Card title"
