@@ -59,11 +59,10 @@ class ClickCountPie extends Component{
 
     render() {
         return(
-            <div style={{ marginLeft:'32px', marginTop:'32px'}}>
+            <div style={{ marginLeft:'8px', marginTop:'8px'}}>
                 <Card
                     title="TEST课程销售量统计"
-                    style={{ borderRadius:'4px 4px 4px 4px',
-                            boxShadow:'0px 0px 5px #cfcfcf'}}
+                    style={{ borderRadius:'4px 4px 4px 4px'}}
                 >
                     <p
                         style={{

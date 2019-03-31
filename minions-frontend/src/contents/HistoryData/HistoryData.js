@@ -6,6 +6,7 @@ import 'ant-design-pro/dist/ant-design-pro.css';
 import PVChartCard from "../../components/PageViews/ChartCard/ChartCard";
 import ClickCountPie from "../../components/ClickCountStatistics/ClickCountPie";
 import TopReferWebList from "../../components/ReferenceStatistics/TopReferWebList";
+import HistroyDataTitle from "../../components/Titles/HistroyDataTitle";
 
 /**
  * HistoryData页布局
@@ -40,11 +41,13 @@ class HistoryData extends Component{
         return(
             <div>
                 <Row>
+                    <HistroyDataTitle/>
+                </Row>
+                <Row>
                     <Card
-                        title="选择查看时间"
                         style={{ borderRadius:'4px 4px 4px 4px',
-                            boxShadow:'0px 0px 5px #cfcfcf',
-                            margin:'32px 32px 0 32px'}}
+                            margin:'0 3px 0 3px'}}
+                        bordered={false}
                     >
                     <DatePicker defaultValue={moment(this.state.date)} format={dateFormat} onChange={this.dateChange.bind(this)} allowClear={false}/>
                     </Card>

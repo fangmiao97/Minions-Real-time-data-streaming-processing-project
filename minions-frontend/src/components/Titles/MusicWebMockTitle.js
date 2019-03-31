@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./MuiscWebMockTitle.css"
+import "./PagesTitle.css"
 
 class MusicWebMockTitle extends Component{
 

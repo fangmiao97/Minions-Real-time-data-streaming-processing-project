@@ -5,6 +5,7 @@ import PVChartCard from "../../components/PageViews/ChartCard/ChartCard";
 import moment from "moment";
 import ClickCountPie from "../../components/ClickCountStatistics/ClickCountPie";
 import TopReferWebList from "../../components/ReferenceStatistics/TopReferWebList";
+import OverviewTitle from "../../components/Titles/OverviewTitle";
 
 /**
  * Overview页布局
@@ -26,6 +27,9 @@ class Overview extends Component{
     render() {
         return(
             <div>
+                <Row>
+                    <OverviewTitle/>
+                </Row>
             <Row>
                 <Col span={8}>
                     <ClickCountPie date={this.state.date}/>

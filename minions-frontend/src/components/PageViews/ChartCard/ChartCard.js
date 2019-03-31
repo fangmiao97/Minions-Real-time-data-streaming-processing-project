@@ -65,7 +65,7 @@ class PVChartCard extends Component{
     render() {
 
         return(
-            <div style={{ marginLeft:'32px', marginTop:'32px'}}>
+            <div style={{ marginLeft:'8px', marginTop:'8px'}}>
                 <ChartCard
                     title="今日PV"
                     action={
@@ -78,8 +78,7 @@ class PVChartCard extends Component{
                         <Field label="日均Page View" value={numeral(12423).format("0,0")} />
                      }
                     contentHeight={46}
-                    style={{ borderRadius:'4px 4px 4px 4px',
-                        boxShadow:'0px 0px 5px #cfcfcf'}}>
+                    style={{ borderRadius:'4px 4px 4px 4px'}}>
                     <span>
                         周同比
                         <Trend flag="up" style={{ marginLeft: 8, color: "rgba(0,0,0,.85)" }}>

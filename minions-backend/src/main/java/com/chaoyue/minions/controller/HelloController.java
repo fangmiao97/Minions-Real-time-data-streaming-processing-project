@@ -48,6 +48,7 @@ public class HelloController {
         }catch (Exception e){
             logger.error("error:" + e);
             e.printStackTrace();
+            res = 0;
         }
 
         return res;
@@ -68,6 +69,7 @@ public class HelloController {
         }catch (Exception e){
             logger.error("error:" + e);
             e.printStackTrace();
+            res = 0;
         }
 
         return res;
