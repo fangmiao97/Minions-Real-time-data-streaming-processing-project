@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Card, Icon, Button, notification} from 'antd';
+import { Card, Icon, Button, notification, message} from 'antd';
 import axios from "axios";
 import Utils from "../../utils/axiospath";
 
@@ -9,15 +9,19 @@ Icon.setTwoToneColor('#fe2d55');
 
 const openNotification = (songInfo) => {
     notification.open({
-        message: songInfo.name,
+        duration: 60,
+        message: "正在播放 "+ songInfo.name,
         description: songInfo.artist + " - " + songInfo.album,
         style: {
-            width: 600,
-            marginLeft: 335 - 600,
+            width: 300,
+            marginLeft: 70
         },
     });
 }
 
+/**
+ * 歌曲卡片
+ */
 class MockSongComponent extends Component{
 
     constructor(props) {
@@ -29,17 +33,19 @@ class MockSongComponent extends Component{
     }
 
 
-
     clickTrySecond(songInfo){
 
         openNotification(songInfo);
+
         axios.get(Utils.defaultURIdefaultURI+"/logtest2", {
             params:{
                 K_topic: 'hello_ladygaga_topic',
-                contents: 'hopeyoucanseeit_nihao hhh'
+                operation : 'SongPlay',
+                songId: songInfo.songID
             }
         }).then(function (response) {
             if (response.data === 1){
+                message.success('添加歌曲播放记录成功');
                 console.log("日志记录成功")
             } else console.log("日志记录错误")
         }).catch(function (error) {

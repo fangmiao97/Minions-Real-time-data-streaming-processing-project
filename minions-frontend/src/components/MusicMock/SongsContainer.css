@@ -3,7 +3,9 @@
     margin-left: 3px;
     margin-right: 3px;
     background-color: #fff;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow: auto;
+    padding-bottom: 26px;
 }
 
 .miniTitle {

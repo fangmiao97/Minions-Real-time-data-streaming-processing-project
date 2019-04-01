@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapperResultSetExtractor;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,5 +50,16 @@ public class MusicInfoDAO implements Serializable {
                 }));
 
         return dateList;
+    }
+
+    public String getSongNameNArtist(String songID) {
+
+        String executeSql = "select concat_ws('-',name,artist) as result from MessageWikiPro.SongInfo where idSongInfo = ?";
+
+        String res = jdbcTemplate.queryForObject(executeSql,
+                new Object[] {songID}, String.class);
+
+        return res;
+
     }
 }

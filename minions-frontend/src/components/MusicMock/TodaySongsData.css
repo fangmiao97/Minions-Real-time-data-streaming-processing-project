@@ -1,0 +1,19 @@
+.base {
+    padding-top: 16px;
+    padding-left: 16px;
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: #fff;
+    padding-bottom: 32px;
+}
+
+.title1 {
+    color: #fe2d55;
+    font-weight: 600;
+    font-size: medium;
+}
+
+.title2 {
+    font-weight: 600;
+    font-size: x-large;
+}

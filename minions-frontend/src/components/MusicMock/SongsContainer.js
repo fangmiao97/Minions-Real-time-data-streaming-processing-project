@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import MockSongComponent from "./Song";
-import "./Container.css";
+import "./SongsContainer.css";
 import axios from 'axios';
 import Utils from "../../utils/axiospath"
 
+/**
+ * 歌曲展示容器
+ */
 class MusicWebMockContainer extends Component{
 
     constructor(props) {

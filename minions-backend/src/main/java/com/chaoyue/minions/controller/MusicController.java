@@ -1,6 +1,8 @@
 package com.chaoyue.minions.controller;
 
 import com.chaoyue.minions.DTO.SongInfoDTO;
+import com.chaoyue.minions.DTO.TagCloudDTO;
+import com.chaoyue.minions.dao.DailySongsPlayDAO;
 import com.chaoyue.minions.dao.MusicInfoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +23,9 @@ public class MusicController {
 
     @Autowired
     private MusicInfoDAO musicInfoDAO;
+
+    @Autowired
+    private DailySongsPlayDAO dailySongsPlayDAO;
 
     @GetMapping("SongInfoList")
     public List<SongInfoDTO> getSongInfoList() {
@@ -46,4 +53,25 @@ public class MusicController {
 
         return list;
     }
+
+    @GetMapping("songPlayedData")
+    public List<TagCloudDTO> getSongPlayedData(HttpServletRequest request) throws IOException {
+
+        String date = request.getParameter("date");
+
+        ArrayList<TagCloudDTO> list = new ArrayList<>();
+
+        Map<String, Long> maps = dailySongsPlayDAO.querySongsPlayDataByDate(date);
+
+        for (Map.Entry<String, Long> entry : maps.entrySet()) {
+            TagCloudDTO item = new TagCloudDTO();
+            item.setName(musicInfoDAO.getSongNameNArtist(entry.getKey().substring(9)));
+            item.setValue(Math.toIntExact(entry.getValue()));
+            list.add(item);
+        }
+
+        return list.subList(0,10);
+    }
+
+
 }

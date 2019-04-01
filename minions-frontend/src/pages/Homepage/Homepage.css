@@ -22,10 +22,11 @@
 .logo {
     height: 30px;
     background: rgba(255,255,255,.2);
-    margin: 16px;
+    margin: 11px 16px 22px 0;
     padding-left: 20%;
-    font-family: "Apple Braille";
-    font-size: x-large;
+    /*font-family: "Apple Braille";*/
+    font-size: xx-large;
+    font-weight: 500;
     color: #fe2d55;
 }
 

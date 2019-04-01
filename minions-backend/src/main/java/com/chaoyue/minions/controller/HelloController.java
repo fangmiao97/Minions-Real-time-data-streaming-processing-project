@@ -60,11 +60,14 @@ public class HelloController {
 
         int res = 0;
 
+        System.out.println(request);
+
         String k_topic = request.getParameter("K_topic");
-        String contents = request.getParameter("contents");
+        String operation = request.getParameter("operation");
+        String songID = request.getParameter("songId");
 
         try {
-            logger.info("topic:" + k_topic + " " + "contents:"+ contents + "try:bbb");
+            logger.info("topic:" + k_topic + " operation:"+ operation + " songID:" + songID);
             res = 1;
         }catch (Exception e){
             logger.error("error:" + e);
@@ -75,9 +78,6 @@ public class HelloController {
         return res;
 
     }
-
-
-
 
 
 }

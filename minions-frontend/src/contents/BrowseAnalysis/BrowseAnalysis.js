@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import axios from "axios";
-import {Button} from "antd";
-import Utils from "../../utils/axiospath"
 import MusicWebMockTitle from "../../components/Titles/MusicWebMockTitle";
-import { Row, Col, Icon, Tooltip, Card } from 'antd';
-import MusicWebMockContainer from "../../components/MusicMock/Container";
+import { Row} from 'antd';
+import MusicWebMockContainer from "../../components/MusicMock/SongsContainer";
+import TodaySongsData from "../../components/MusicMock/TodaySongsData";
 
 class BrowseAnalysis extends Component{
 
@@ -16,6 +14,7 @@ class BrowseAnalysis extends Component{
                     <MusicWebMockTitle/>
                 </Row>
                     <MusicWebMockContainer/>
+                <TodaySongsData/>
 
             </div>
         );
