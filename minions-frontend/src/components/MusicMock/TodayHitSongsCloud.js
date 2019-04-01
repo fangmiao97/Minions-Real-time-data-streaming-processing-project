@@ -18,7 +18,7 @@ class TodayHitSongsCloud extends Component{
 
     getTagsDataByDate(date) {
         let _this = this;
-        axios.get(Utils.defaultURIdefaultURI + "/songPlayedData",{
+        axios.get(Utils.defaultURIdefaultURI + "/getSongPlayedDataForCloudTags",{
             params:{
                 date: date
             }

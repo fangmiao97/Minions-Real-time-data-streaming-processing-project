@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import "./TodaySongsData.css"
 import moment from "moment";
 import TodayHitSongsCloud from "./TodayHitSongsCloud";
+import SongPlayDataTable from "./SongPlayDataTable";
 
 
 const dateFormat = 'YYYYMMDD';
@@ -29,6 +30,7 @@ class TodaySongsData extends Component{
                     <div className="title2">今日歌曲播放数据</div>
                 </div>
                 <TodayHitSongsCloud date={this.state.date}/>
+                <SongPlayDataTable date={this.state.date}/>
             </div>
         );
     }
