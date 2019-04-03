@@ -4,6 +4,7 @@ import moment from "moment";
 import TodayHitSongsCloud from "./TodayHitSongsCloud";
 import SongPlayDataTable from "./SongPlayDataTable";
 import SevenDaysPVMiniArea from "../PageViews/7DayData/MiniArea";
+import RecentlyPlayedSongCard from "./RecentlyPlayedSongCard";
 
 
 const dateFormat = 'YYYYMMDD';
@@ -33,6 +34,7 @@ class TodaySongsData extends Component{
                 <div style={{ display:'flex', flexWrap:'wrap'}}>
                     <TodayHitSongsCloud date={this.state.date}/>
                     <SongPlayDataTable date={this.state.date}/>
+                    <RecentlyPlayedSongCard/>
                 </div>
             </div>
         );
