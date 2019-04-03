@@ -6,6 +6,7 @@ import moment from "moment";
 import ClickCountPie from "../../components/ClickCountStatistics/ClickCountPie";
 import TopReferWebList from "../../components/ReferenceStatistics/TopReferWebList";
 import OverviewTitle from "../../components/Titles/OverviewTitle";
+import SevenDaysPVMiniArea from "../../components/PageViews/7DayData/MiniArea";
 
 /**
  * Overview页布局
@@ -37,6 +38,10 @@ class Overview extends Component{
                 </Col>
                 <Col span={8}>
                     <PVChartCard date={this.state.date}/>
+                    <SevenDaysPVMiniArea date={this.state.date}/>
+
+                </Col>
+                <Col span={8}>
                     <TopReferWebList date={this.state.date}/>
                 </Col>
             </Row>

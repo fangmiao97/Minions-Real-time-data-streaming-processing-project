@@ -55,7 +55,7 @@ class TopReferWebList extends Component{
 
     render() {
         return (
-            <div style={{ marginLeft:'8px', marginTop:'8px' }}>
+            <div style={{ marginLeft:'8px', marginTop:'8px', marginRight:'8px' }}>
                 <Card
                     title="Top Reference Web 来源网站"
                     style={{ borderRadius:'4px 4px 4px 4px'}}>

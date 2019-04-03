@@ -29,7 +29,7 @@ public class ClickCountDAO {
     private static String tablename = "imooc_course_clickcount";
 
     /**
-     * rowkey前缀过滤查询
+     * 获取不同了类目的点击次数
      * @param condition
      * @return
      * @throws IOException
@@ -62,6 +62,12 @@ public class ClickCountDAO {
         return map;
     }
 
+    /**
+     * 根据日期获得总的页面浏览量
+     * @param condition
+     * @return
+     * @throws IOException
+     */
     public long getPageViewsByDate(String condition) throws IOException {
         long res = 0;
 

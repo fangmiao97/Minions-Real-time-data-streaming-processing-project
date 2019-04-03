@@ -3,6 +3,7 @@ import "./TodaySongsData.css"
 import moment from "moment";
 import TodayHitSongsCloud from "./TodayHitSongsCloud";
 import SongPlayDataTable from "./SongPlayDataTable";
+import SevenDaysPVMiniArea from "../PageViews/7DayData/MiniArea";
 
 
 const dateFormat = 'YYYYMMDD';
@@ -29,8 +30,10 @@ class TodaySongsData extends Component{
                     <div className="title1">TODAY PLAY DATA</div>
                     <div className="title2">今日歌曲播放数据</div>
                 </div>
-                <TodayHitSongsCloud date={this.state.date}/>
-                <SongPlayDataTable date={this.state.date}/>
+                <div style={{ display:'flex', flexWrap:'wrap'}}>
+                    <TodayHitSongsCloud date={this.state.date}/>
+                    <SongPlayDataTable date={this.state.date}/>
+                </div>
             </div>
         );
     }

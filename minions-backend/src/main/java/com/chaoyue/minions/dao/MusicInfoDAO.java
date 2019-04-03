@@ -30,7 +30,7 @@ public class MusicInfoDAO implements Serializable {
 
         String executeSql = "SELECT * FROM MessageWikiPro.SongInfo";
 
-        List dateList = (ArrayList) jdbcTemplate.query(executeSql,
+        List dataList = (ArrayList) jdbcTemplate.query(executeSql,
                 new PreparedStatementSetter() {
                     @Override
                     public void setValues(java.sql.PreparedStatement preparedStatement) throws SQLException {
@@ -49,7 +49,7 @@ public class MusicInfoDAO implements Serializable {
                     }
                 }));
 
-        return dateList;
+        return dataList;
     }
 
     public String getSongNameNArtist(String songID) {
@@ -61,5 +61,34 @@ public class MusicInfoDAO implements Serializable {
 
         return res;
 
+    }
+
+    /**
+     * 根据songID查询 歌名 歌手 专辑
+     * @param songID
+     * @return
+     */
+    public List<Map<String, String>> getSongInfoforTable(String songID) {
+
+        String executeSql = "select name, artist, album from MessageWikiPro.SongInfo where idSongInfo = " + songID;
+
+        List dataList = (ArrayList) jdbcTemplate.query(executeSql,
+                new PreparedStatementSetter() {
+                    @Override
+                    public void setValues(java.sql.PreparedStatement preparedStatement) throws SQLException {
+                    }
+                },
+                new RowMapperResultSetExtractor(new RowMapper() {
+                    public Object mapRow(ResultSet rs, int index)
+                            throws SQLException {
+                        Map u = new HashMap();
+                        u.put("name", rs.getString("name"));
+                        u.put("artist", rs.getString("artist"));
+                        u.put("album", rs.getString("album"));
+                        return u;
+                    }
+                }));
+
+        return dataList;
     }
 }

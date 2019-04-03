@@ -1,14 +1,24 @@
 import React, {Component} from 'react';
-import { Table } from 'antd';
+import { Table, Card } from 'antd';
 import axios from "axios";
 import Utils from "../../utils/axiospath";
 
 //TODO... 把歌手专辑单独成列
 const columns = [
     {
-        title: '歌曲信息',
-        dataIndex: 'songInfo',
+        title: '歌名',
+        dataIndex: 'name',
         key: 'name'
+    },
+    {
+        title:'歌手',
+        dataIndex: 'artist',
+        key: 'artist'
+    },
+    {
+        title:'专辑',
+        dataIndex: 'album',
+        key: 'album'
     },
     {
         title: '今日播放数',
@@ -24,23 +34,7 @@ class SongPlayDataTable extends Component{
 
         this.state = {
             date: this.props.date,
-            dataSource: [
-                {
-                    key: 1,
-                    songInfo: 'All too well-Taylor Swift',
-                    play_count:22222
-                },
-                {
-                    key: 2,
-                    songInfo: 'All too fl-Taylor Swift',
-                    play_count:22422
-                },
-                {
-                    key: 3,
-                    songInfo: 'Adtoo well-Taylor Swift',
-                    play_count:22662
-                }
-            ]
+            dataSource: []
         }
 
     }
@@ -65,8 +59,10 @@ class SongPlayDataTable extends Component{
 
     render() {
         return (
-            <div>
-                <Table columns={columns} dataSource={this.state.dataSource} size="middle" />
+            <div style={{marginLeft:'16px', marginTop:'16px'}}>
+                <Card title="今日歌曲播放一览" style={{width:600}}>
+                    <Table columns={columns} dataSource={this.state.dataSource} size="middle" />
+                </Card>
             </div>
         );
     }

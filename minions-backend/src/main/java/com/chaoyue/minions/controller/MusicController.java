@@ -72,9 +72,18 @@ public class MusicController {
             list.add(item);
         }
 
-        return list.subList(0,10);
+        if (list.size() >= 10)
+            return list.subList(0,10);
+
+        return list;
     }
 
+    /**
+     * 返回歌曲播放数据表格的数据结构
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @GetMapping("getSongPlayedDataForTable")
     public List<SongDataTableDTO> getSongPlayedDataForTable(HttpServletRequest request) throws IOException {
 
@@ -83,12 +92,16 @@ public class MusicController {
         List<SongDataTableDTO> list = new ArrayList<>();
         Map<String, Long> maps = dailySongsPlayDAO.querySongsPlayDataByDate(date);
 
-        //TODO... 修改table结构
         for (Map.Entry<String, Long> entry : maps.entrySet()) {
             SongDataTableDTO item = new SongDataTableDTO();
             item.setKey(Integer.parseInt(entry.getKey().substring(9)));
-            item.setSongInfo(musicInfoDAO.getSongNameNArtist(entry.getKey().substring(9)));
             item.setPlay_count(Math.toIntExact(entry.getValue()));
+
+            List<Map<String, String>> songInfo = musicInfoDAO.getSongInfoforTable(entry.getKey().substring(9));
+            item.setName(songInfo.get(0).get("name"));
+            item.setArtist(songInfo.get(0).get("artist"));
+            item.setAlbum(songInfo.get(0).get("album"));
+
             list.add(item);
         }
 

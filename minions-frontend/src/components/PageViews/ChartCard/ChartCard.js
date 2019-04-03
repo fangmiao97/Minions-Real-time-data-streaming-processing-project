@@ -7,7 +7,6 @@ import numeral from 'numeral';
 import axios from 'axios';
 import Utils from "../../../utils/axiospath"
 
-
 class PVChartCard extends Component{
 
 
