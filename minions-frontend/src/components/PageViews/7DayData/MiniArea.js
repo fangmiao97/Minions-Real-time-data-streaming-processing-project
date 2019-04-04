@@ -38,11 +38,20 @@ class SevenDaysPVMiniArea extends Component{
         this.get7daysPVData(this.state.date)
     }
 
+    componentDidMount() {
+        this.timer = setInterval(
+            () => {
+                this.get7daysPVData(this.state.date)
+            },
+            60000
+        )
+    }
+
     render() {
         return (
             <div style={{ marginLeft:'8px', marginTop:'8px'}}>
                 <ChartCard title="7日PV数据走势">
-                    <MiniArea height={100}
+                    <MiniArea height={80}
                               line
                               color="#FEDFE4"
                               borderColor="#FE2D55"

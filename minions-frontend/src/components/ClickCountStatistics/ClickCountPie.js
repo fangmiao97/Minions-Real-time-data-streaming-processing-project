@@ -61,22 +61,13 @@ class ClickCountPie extends Component{
         return(
             <div style={{ marginLeft:'8px', marginTop:'8px'}}>
                 <Card
-                    title="TEST课程销售量统计"
+                    title="各类目访问统计"
                     style={{ borderRadius:'4px 4px 4px 4px'}}
                 >
-                    <p
-                        style={{
-                            fontSize: 14,
-                            color: 'rgba(0, 0, 0, 0.85)',
-                            marginBottom: 16,
-                            fontWeight: 500,
-                        }}>
-                        课程销售量统计
-                    </p>
                     <Pie
                         hasLegend = {true}
-                        title="销售量"
-                        subTitle="销售量"
+                        title="访问量"
+                        subTitle="访问量"
                         total={() => (
                             <span
                                 dangerouslySetInnerHTML={{
