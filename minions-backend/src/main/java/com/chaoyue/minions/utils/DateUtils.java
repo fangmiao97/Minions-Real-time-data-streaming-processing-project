@@ -49,8 +49,22 @@ public class DateUtils {
 
     }
 
+    /**
+     * pv趋势中要把201904101714转成17：41
+     * @param time
+     * @return
+     */
+    public String parseMinuteTime(String time) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
+        LocalDateTime dateTime = LocalDateTime.parse(time, formatter);
+        String formattedTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
+        return formattedTime;
+
+    }
+
     public static void main(String[] args) throws ParseException {
-        System.out.println(DateUtils.getInstance().dayBefore("20190401",(long)5));
+        System.out.println(DateUtils.getInstance().parseMinuteTime("201904101624"));
     }
 
 }

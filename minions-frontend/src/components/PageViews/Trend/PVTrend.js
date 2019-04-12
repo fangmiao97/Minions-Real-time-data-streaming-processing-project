@@ -1,65 +1,61 @@
-import React, { Component} from 'react';
-import {ChartCard, Field, MiniArea }from 'ant-design-pro/lib/Charts';
+import React, {Component} from 'react';
+import {ChartCard, MiniArea, TimelineChart} from 'ant-design-pro/lib/Charts';
 import axios from 'axios';
 import Utils from "../../../utils/axiospath"
 
-const beginDay = new Date().getTime();
-
-/**
- * 7日PV访问量走势
- */
-class SevenDaysPVMiniArea extends Component{
+class PVTrend extends Component{
 
     constructor(props) {
         super(props);
 
         this.state = {
-
             date: this.props.date,
-            SevenDayData:[]
+            Trend:[]
         }
     }
 
-    get7daysPVData(date) {
+    getPVTrend(date) {
         let _this = this;
-        axios.get(Utils.defaultURIdefaultURI+"/getSevenDaysPVDate",{
+        axios.get(Utils.defaultURIdefaultURI + "/getPVTrend",{
             params: {
-                date:date
+                date: date
             }
-        }).then(function (response) {
+        }).then(function (reponse) {
+
             _this.setState({
-                SevenDayData: response.data
+                Trend: reponse.data
             })
         })
     }
 
     componentWillMount() {
-        this.get7daysPVData(this.state.date)
+        this.getPVTrend(this.state.date)
     }
 
     componentDidMount() {
         this.timer = setInterval(
             () => {
-                this.get7daysPVData(this.state.date)
+                this.getPVTrend(this.state.date)
             },
-            60000
+            600000
         )
     }
 
+
     render() {
-        return (
+        return (//TODO...用Bizcharts做图标
             <div style={{ marginLeft:'8px', marginTop:'8px'}}>
-                <ChartCard title="7日PV数据走势">
+                <ChartCard title="今日PV走势">
                     <MiniArea height={80}
                               line
                               color="#FEDFE4"
                               borderColor="#FE2D55"
                               animate={true}
-                              data={this.state.SevenDayData}/>
+                              data={this.state.Trend}/>
                 </ChartCard>
             </div>
         );
     }
 }
 
-export default SevenDaysPVMiniArea;
+export default PVTrend;

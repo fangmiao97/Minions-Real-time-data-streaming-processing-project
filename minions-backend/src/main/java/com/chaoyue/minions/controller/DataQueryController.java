@@ -4,9 +4,9 @@ import com.chaoyue.minions.DTO.MiniAreaDTO;
 import com.chaoyue.minions.DTO.PieChartDTO;
 import com.chaoyue.minions.DTO.TopReferWebListDTO;
 import com.chaoyue.minions.dao.ClickCountDAO;
+import com.chaoyue.minions.dao.ClickCountTrendDAO;
 import com.chaoyue.minions.dao.SearchClickCountDAO;
 import com.chaoyue.minions.utils.DateUtils;
-import com.jcraft.jsch.MAC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -32,6 +31,9 @@ public class DataQueryController {
 
     @Autowired
     private SearchClickCountDAO searchClickCountDAO;
+
+    @Autowired
+    private ClickCountTrendDAO clickCountTrendDAO;
 
     @Autowired
     private DateUtils dateUtils;
@@ -133,4 +135,30 @@ public class DataQueryController {
 
         return res;
     }
+
+    /**
+     * 得到当前日期中每隔十分钟的访问量
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @GetMapping("getPVTrend")
+    private List<MiniAreaDTO> getPVTrend(HttpServletRequest request) throws IOException {
+        List<MiniAreaDTO> list = new ArrayList<>();
+
+        String date = request.getParameter("date");
+
+        ArrayList<Map<String, String>> maps = clickCountTrendDAO.queryPVTrendByDate(date);
+
+        for (int i = 0; i < maps.size(); i++){
+            Map<String, String> item = maps.get(i);
+            MiniAreaDTO miniAreaDTO = new MiniAreaDTO();
+            miniAreaDTO.setX(dateUtils.parseMinuteTime(item.get("time")));
+            miniAreaDTO.setY(Integer.parseInt(item.get("clickcount")));
+            list.add(miniAreaDTO);
+        }
+
+        return list;
+    }
+
 }
