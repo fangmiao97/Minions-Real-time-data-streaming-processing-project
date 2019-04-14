@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { List, Typography, Card, Avatar } from 'antd';
+import { List, Card, Table } from 'antd';
 import axios from 'axios';
 import Utils from "../../utils/axiospath"
 
+/**
+ * Top来源网站列表
+ */
 class TopReferWebList extends Component{
 
     constructor(props) {
@@ -54,23 +57,27 @@ class TopReferWebList extends Component{
 
 
     render() {
+
+        const columns = [
+            {
+                title: '来源网站',
+                dataIndex: 'website',
+                key: 'website'
+            },
+            {
+                title: '数量',
+                dataIndex: 'count',
+                key: 'count',
+                sorter: (a, b) => a.count - b.count,
+                defaultSortOrder: 'descend',
+            }
+        ]
+
         return (
             <div style={{ marginLeft:'8px', marginTop:'8px', marginRight:'8px' }}>
                 <Card
-                    title="Top Reference Web 来源网站"
-                    style={{ borderRadius:'4px 4px 4px 4px'}}>
-                <List
-                    dataSource={this.state.topWebList}
-                      renderItem={item => (
-                          <List.Item >
-                              <List.Item.Meta
-                                  title={item.rank}
-                                  description={item.website}
-                              />
-                              <div>{item.count}</div>
-                          </List.Item>
-                      )
-                      }/>
+                    title="Top Reference Web 来源网站">
+                    <Table columns={columns} dataSource={this.state.topWebList} size="middle" />
                 </Card>
             </div>
         );

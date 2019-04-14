@@ -23,7 +23,9 @@ const columns = [
     {
         title: '今日播放数',
         dataIndex: 'play_count',
-        key: 'value'
+        key: 'value',
+        sorter: (a, b) => a.play_count - b.play_count,
+        defaultSortOrder: 'descend',
     }
 ];
 

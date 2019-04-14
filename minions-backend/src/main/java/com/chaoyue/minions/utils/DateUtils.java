@@ -57,14 +57,14 @@ public class DateUtils {
     public String parseMinuteTime(String time) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
         LocalDateTime dateTime = LocalDateTime.parse(time, formatter);
-        String formattedTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        String formattedTime = dateTime.format(DateTimeFormatter.ofPattern("HH:mm"));
 
         return formattedTime;
 
     }
 
-    public static void main(String[] args) throws ParseException {
-        System.out.println(DateUtils.getInstance().parseMinuteTime("201904101624"));
-    }
+//    public static void main(String[] args) throws ParseException {
+//        System.out.println(DateUtils.getInstance().parseMinuteTime("201904101624"));
+//    }
 
 }

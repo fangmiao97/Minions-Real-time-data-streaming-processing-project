@@ -38,6 +38,17 @@ public class DataQueryController {
     @Autowired
     private DateUtils dateUtils;
 
+    //类目标题映射表
+    private final static Map<String, String> categoriesNameMap = new HashMap<>();
+    static {
+        categoriesNameMap.put("146", "新近发布");
+        categoriesNameMap.put("112", "为你推荐");
+        categoriesNameMap.put("145", "今日歌单");
+        categoriesNameMap.put("128", "瞩目艺人");
+        categoriesNameMap.put("131", "今日专辑");
+        categoriesNameMap.put("130", "最近播放");
+    }
+
     /**
      * 根据选择的日期获取HBase中clickcount的信息
      * @param request
@@ -55,11 +66,10 @@ public class DataQueryController {
 
         for (Map.Entry<String, Long> entry : map.entrySet()) {
             PieChartDTO model = new PieChartDTO();
-            model.setX(entry.getKey());
+            model.setX(categoriesNameMap.get(entry.getKey().substring(9)));
             model.setY(Math.toIntExact(entry.getValue()));
             list.add(model);
         }
-
         return list;
 
     }
@@ -81,6 +91,57 @@ public class DataQueryController {
     }
 
     /**
+     * 返回 周同比 日环比 7日均值
+     * @param request
+     * @return
+     */
+    @GetMapping("getCompData")
+    private Map<String, String> getCompareData(HttpServletRequest request) throws ParseException, IOException {
+        Map<String, String> res = new HashMap<>();
+
+        String date = request.getParameter("date");
+        //周环比
+        long todayPV = clickCountDAO.getPageViewsByDate(date);
+        String sevenDayBefore = dateUtils.dayBefore(date, 7);
+        long sevenDayBeforePV = clickCountDAO.getPageViewsByDate(sevenDayBefore);
+        double wow = 0;
+        if (sevenDayBeforePV != 0){
+            wow = (todayPV * 1.0 / sevenDayBeforePV) * 100;
+            res.put("wow", String.valueOf(wow).substring(0,6));
+        }else
+            res.put("wow", String.valueOf(wow));
+
+
+        //日环比
+        String yesterday = dateUtils.dayBefore(date, 1);
+        long yesterdayPV = clickCountDAO.getPageViewsByDate(yesterday);
+        double dod = 0;
+        if (yesterdayPV != 0){
+            dod = (todayPV * 1.0 / yesterdayPV) * 100;
+            res.put("dod", String.valueOf(dod).substring(0,6));
+        }else
+            res.put("dod", String.valueOf(dod));
+
+
+        //7日均值
+        long sum = 0;
+        for (int i = 6; i >= 0; i--) {
+            if(i == 6){
+                date = dateUtils.dayBefore(date, i);
+            }else
+                date = dateUtils.dayBefore(date, -1);
+            sum += clickCountDAO.getPageViewsByDate(date);
+        }
+        int average = 0;
+        if (sum != 0){
+            average = Math.toIntExact(sum / 7);
+        }
+        res.put("average", String.valueOf(average));
+
+        return res;
+    }
+
+    /**
      * 得到date当天关于来源网站的信息
      * @param request
      * @return
@@ -95,11 +156,8 @@ public class DataQueryController {
 
         Map<String, Long> map = searchClickCountDAO.getTopReferWebsList(date);
 
-        int rank = 1;
         for(Map.Entry<String, Long> entry : map.entrySet()) {
             TopReferWebListDTO item = new TopReferWebListDTO();
-            item.setRank(rank);
-            rank++;
             item.setWebsite(entry.getKey());
             item.setCount(Math.toIntExact(entry.getValue()));
             res.add(item);
@@ -137,7 +195,7 @@ public class DataQueryController {
     }
 
     /**
-     * 得到当前日期中每隔十分钟的访问量
+     * 得到当前日期中每隔三十分钟的访问量
      * @param request
      * @return
      * @throws IOException

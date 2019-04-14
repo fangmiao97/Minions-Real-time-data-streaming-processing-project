@@ -5,17 +5,9 @@ package com.chaoyue.minions.DTO;
  */
 public class TopReferWebListDTO {
 
-    private int rank;
     private String website;
     private int count;
 
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
 
     public String getWebsite() {
         return website;

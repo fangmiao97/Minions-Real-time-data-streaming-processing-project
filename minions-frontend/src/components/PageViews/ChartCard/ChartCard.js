@@ -16,7 +16,10 @@ class PVChartCard extends Component{
         this.state = {
 
             date: this.props.date,
-            total: 0
+            total: 0,
+            wow: 0,//周同比 week over week
+            dod: 0,//日环比 day over day
+            average: 0//均值
         }
     }
 
@@ -36,8 +39,26 @@ class PVChartCard extends Component{
         })
     }
 
+    getCompData(date) {
+        let _this = this;
+
+        axios.get(Utils.defaultURIdefaultURI + "/getCompData", {
+            params: {
+                date: date
+            }
+        }).then(function (response) {
+            _this.setState({
+                wow: response.data.wow,
+                dod: response.data.dod,
+                average: response.data.average
+            });
+            console.log(response.data)
+        })
+    }
+
     componentWillMount() {
         this.getPVByDate(this.state.date)
+        this.getCompData(this.state.date)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -46,6 +67,7 @@ class PVChartCard extends Component{
                 date:nextProps.date
             },() => {
                 this.getPVByDate(nextProps.date)
+                this.getCompData(this.state.date)
             })
         }
     }
@@ -54,6 +76,7 @@ class PVChartCard extends Component{
         this.timer = setInterval(
             () => {
                 this.getPVByDate(this.state.date)
+                this.getCompData(this.state.date)
             },
             60000
         );
@@ -66,7 +89,7 @@ class PVChartCard extends Component{
         return(
             <div style={{ marginLeft:'8px', marginTop:'8px'}}>
                 <ChartCard
-                    title="今日PV"
+                    title="PV统计"
                     action={
                       <Tooltip title="页面浏览总量">
                           <Icon type="info-circle-o" />
@@ -74,14 +97,14 @@ class PVChartCard extends Component{
                     }
                      total={this.state.total}
                      footer={
-                        <Field label="日均Page View" value={numeral(12423).format("0,0")} />
+                        <Field label="日均Page View" value={numeral(this.state.average).format("0,0")} />
                      }
                     contentHeight={46}
                     style={{ borderRadius:'4px 4px 4px 4px'}}>
                     <span>
                         周同比
                         <Trend flag="up" style={{ marginLeft: 8, color: "rgba(0,0,0,.85)" }}>
-                        12%
+                            {this.state.wow}%
                         </Trend>
                     </span>
                     <span style={{ marginLeft: 16 }}>
@@ -90,7 +113,7 @@ class PVChartCard extends Component{
                             flag="down"
                             style={{ marginLeft: 8, color: "rgba(0,0,0,.85)" }}
                         >
-                            11%
+                            {this.state.dod}%
                         </Trend>
                     </span>
                 </ChartCard>

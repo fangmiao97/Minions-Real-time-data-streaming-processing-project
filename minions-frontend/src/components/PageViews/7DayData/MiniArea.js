@@ -37,6 +37,16 @@ class SevenDaysPVMiniArea extends Component{
         this.get7daysPVData(this.state.date)
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(this.state.date !== nextProps.date) {
+            this.setState({
+                date:nextProps.date
+            },() => {
+                this.get7daysPVData(this.state.date)
+            })
+        }
+    }
+
     componentDidMount() {
         this.timer = setInterval(
             () => {
