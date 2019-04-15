@@ -1,10 +1,12 @@
 package com.chaoyue.minions.controller;
 
+import com.chaoyue.minions.DTO.RecentlySongPlayTableDTO;
 import com.chaoyue.minions.DTO.SongDataTableDTO;
 import com.chaoyue.minions.DTO.SongInfoDTO;
 import com.chaoyue.minions.DTO.TagCloudDTO;
 import com.chaoyue.minions.dao.DailySongsPlayDAO;
 import com.chaoyue.minions.dao.MusicInfoDAO;
+import com.chaoyue.minions.dao.RecentlySongPLayDAO;
 import com.jcraft.jsch.MAC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -28,6 +30,9 @@ public class MusicController {
 
     @Autowired
     private DailySongsPlayDAO dailySongsPlayDAO;
+
+    @Autowired
+    private RecentlySongPLayDAO recentlySongPLayDAO;
 
     @GetMapping("SongInfoList")
     public List<SongInfoDTO> getSongInfoList() {
@@ -56,6 +61,12 @@ public class MusicController {
         return list;
     }
 
+    /**
+     * 歌曲播放tagcloud
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @GetMapping("getSongPlayedDataForCloudTags")
     public List<TagCloudDTO> getSongPlayedDataForCloudTags(HttpServletRequest request) throws IOException {
 
@@ -101,6 +112,34 @@ public class MusicController {
             item.setName(songInfo.get(0).get("name"));
             item.setArtist(songInfo.get(0).get("artist"));
             item.setAlbum(songInfo.get(0).get("album"));
+
+            list.add(item);
+        }
+
+        return list;
+    }
+
+
+    /**
+     * 返回最近1小时播放歌曲信息
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @GetMapping("getRecentTopSongs")
+    public List<RecentlySongPlayTableDTO> getRecentTopSongForTable(HttpServletRequest request) throws IOException {
+        String date = request.getParameter("date");
+
+        List<RecentlySongPlayTableDTO> list = new ArrayList<>();
+
+        Map<String, Long> maps = recentlySongPLayDAO.queryRecentlyPlaySong(date);
+        for (Map.Entry<String, Long> entry : maps.entrySet()) {
+            RecentlySongPlayTableDTO item = new RecentlySongPlayTableDTO();
+            item.setKey(Integer.parseInt(entry.getKey().substring(9)));
+            item.setPlay_count(Math.toIntExact(entry.getValue()));
+
+            List<Map<String, String>> songInfo = musicInfoDAO.getSongInfoforTable(entry.getKey().substring(9));
+            item.setName(songInfo.get(0).get("name"));
 
             list.add(item);
         }

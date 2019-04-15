@@ -3,7 +3,6 @@ import { Table, Card } from 'antd';
 import axios from "axios";
 import Utils from "../../utils/axiospath";
 
-//TODO... 把歌手专辑单独成列
 const columns = [
     {
         title: '歌名',
@@ -41,7 +40,7 @@ class SongPlayDataTable extends Component{
 
     }
 
-    getTagsDataByDate(date) {
+    getSongPlayedDataByDate(date) {
         let _this = this;
         axios.get(Utils.defaultURIdefaultURI + "/getSongPlayedDataForTable",{
             params:{
@@ -55,7 +54,16 @@ class SongPlayDataTable extends Component{
     }
 
     componentWillMount() {
-        this.getTagsDataByDate(this.state.date)
+        this.getSongPlayedDataByDate(this.state.date)
+    }
+
+    componentDidMount() {
+        this.timer = setInterval(
+            () => {
+                this.getSongPlayedDataByDate(this.state.date)
+            },
+            10000
+        )
     }
 
 

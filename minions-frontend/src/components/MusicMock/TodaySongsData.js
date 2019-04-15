@@ -34,7 +34,7 @@ class TodaySongsData extends Component{
                 <div style={{ display:'flex', flexWrap:'wrap'}}>
                     <TodayHitSongsCloud date={this.state.date}/>
                     <SongPlayDataTable date={this.state.date}/>
-                    <RecentlyPlayedSongCard/>
+                    <RecentlyPlayedSongCard date={this.state.date}/>
                 </div>
             </div>
         );

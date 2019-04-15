@@ -33,6 +33,15 @@ class TodayHitSongsCloud extends Component{
         this.getTagsDataByDate(this.state.date)
     }
 
+    componentDidMount() {
+        this.timer = setInterval(
+            () => {
+                this.getTagsDataByDate(this.state.date)
+            },
+            10000
+        )
+    }
+
 
     render() {
         return (

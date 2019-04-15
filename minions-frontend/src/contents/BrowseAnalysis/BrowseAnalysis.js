@@ -14,8 +14,7 @@ class BrowseAnalysis extends Component{
                     <MusicWebMockTitle/>
                 </Row>
                     <MusicWebMockContainer/>
-                <TodaySongsData/>
-
+                    <TodaySongsData/>
             </div>
         );
     }
