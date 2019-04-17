@@ -1,5 +1,6 @@
 package com.chaoyue.minions.controller;
 
+import com.chaoyue.minions.DTO.CategoriesPVTrendDTO;
 import com.chaoyue.minions.DTO.MiniAreaDTO;
 import com.chaoyue.minions.DTO.PieChartDTO;
 import com.chaoyue.minions.DTO.TopReferWebListDTO;
@@ -214,15 +215,73 @@ public class DataQueryController {
 
         ArrayList<Map<String, String>> maps = clickCountTrendDAO.queryPVTrendByDate(date);
 
+        Map<String, Integer> map = new LinkedHashMap<>();//有序map！
+
         for (int i = 0; i < maps.size(); i++){
             Map<String, String> item = maps.get(i);
+            String dateTime_Category = item.get("time");//201904191004
+            if (!map.containsKey(dateTime_Category)) {
+                map.put(dateTime_Category, Integer.valueOf(item.get("clickcount")));
+            } else {
+                int clickCoount = map.get(dateTime_Category) + Integer.valueOf(item.get("clickcount"));
+                map.replace(dateTime_Category, clickCoount);
+            }
+        }
+
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
             MiniAreaDTO miniAreaDTO = new MiniAreaDTO();
-            miniAreaDTO.setX(dateUtils.parseMinuteTime(item.get("time")));
-            miniAreaDTO.setY(Integer.parseInt(item.get("clickcount")));
+            miniAreaDTO.setX(dateUtils.parseMinuteTime(entry.getKey()));
+            miniAreaDTO.setY(entry.getValue());
             list.add(miniAreaDTO);
         }
 
         return list;
     }
+
+    /**
+     * 得到分类目的访问量
+     * @param request
+     * @return
+     */
+    @GetMapping("getCategoriesPVTrend")
+    private List<CategoriesPVTrendDTO> getCategoriesPVTrend(HttpServletRequest request) throws IOException {
+
+        List<CategoriesPVTrendDTO> list = new ArrayList<>();
+
+        String date = request.getParameter("date");
+
+        ArrayList<Map<String, String>> maps = clickCountTrendDAO.queryCategoriesPVTrendByDate(date);
+
+        Map<String, Map<String, Integer>> tmpMap =  new LinkedHashMap<>();
+
+        Map<String, Integer> detail = new HashMap<>();//模板map，对不同类目数据的赋值是在这个map上完成的
+        for (int i = 0; i < maps.size(); i++) {
+            Map<String, String> item = maps.get(i);
+            String dateTime_c = item.get("time_c").substring(0,12);//201904171317
+            if (!tmpMap.containsKey(dateTime_c)) {
+                Map<String, Integer> details = new HashMap<>();
+                detail = details;//新的时间点就要有新的map，指针指到新的map上
+                tmpMap.put(dateTime_c, details);
+            }
+            detail.put(categoriesNameMap.get(item.get("time_c").substring(13)), Integer.valueOf(item.get("clickcount")));
+        }
+
+        for (Map.Entry<String, Map<String, Integer>> entry : tmpMap.entrySet()) {
+            CategoriesPVTrendDTO categoriesPVTrendDTO = new CategoriesPVTrendDTO();
+            categoriesPVTrendDTO.setTime(dateUtils.parseMinuteTime(entry.getKey()));
+            categoriesPVTrendDTO.set为你推荐(entry.getValue().get("为你推荐"));
+            categoriesPVTrendDTO.set今日专辑(entry.getValue().get("今日专辑"));
+            categoriesPVTrendDTO.set今日歌单(entry.getValue().get("今日歌单"));
+            categoriesPVTrendDTO.set新近发布(entry.getValue().get("新近发布"));
+            categoriesPVTrendDTO.set最近播放(entry.getValue().get("最近播放"));
+            categoriesPVTrendDTO.set瞩目艺人(entry.getValue().get("瞩目艺人"));
+
+            list.add(categoriesPVTrendDTO);
+        }
+
+        return list;
+
+    }
+
 
 }

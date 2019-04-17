@@ -8,6 +8,7 @@ import TopReferWebList from "../../components/ReferenceStatistics/TopReferWebLis
 import OverviewTitle from "../../components/Titles/OverviewTitle";
 import SevenDaysPVMiniArea from "../../components/PageViews/7DayData/MiniArea";
 import PVTrend from "../../components/PageViews/Trend/PVTrend";
+import CategoriesPVTrend from "../../components/PageViews/Trend/CategoriesPVTrend";
 
 /**
  * Overview页布局
@@ -40,6 +41,7 @@ class Overview extends Component{
                     </Col>
                     <Col span={8}>
                         <ClickCountPie date={this.state.date}/>
+                        <CategoriesPVTrend date={this.state.date}/>
                     </Col>
                     <Col span={8}>
                         <TopReferWebList date={this.state.date}/>

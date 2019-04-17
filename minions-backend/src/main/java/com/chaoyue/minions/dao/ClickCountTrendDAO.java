@@ -49,7 +49,7 @@ public class ClickCountTrendDAO {
         ResultScanner rs = table.getScanner(scan);
         for (Result result : rs) {
             Map<String, String> map = new HashMap<>();
-            String row = Bytes.toString(result.getRow());
+            String row = Bytes.toString(result.getRow()).substring(0,12);
             Long clickCount = Bytes.toLong(result.getValue(Bytes.toBytes(cf), Bytes.toBytes(qualifier)));
             map.put("time", row);
             map.put("clickcount", String.valueOf(clickCount));
@@ -61,4 +61,44 @@ public class ClickCountTrendDAO {
 
         return list;
     }
+
+    /**
+     * 得到分类别的pv数据，其实与上面差一点
+     * @param condition
+     * @return
+     * @throws IOException
+     */
+    public ArrayList<Map<String, String>> queryCategoriesPVTrendByDate(String condition) throws IOException {
+
+        ArrayList<Map<String, String>> list = new ArrayList<>();
+
+
+        HTable table = hBaseUtils.getTable(tablename);
+
+        String cf = "info";
+        String qualifier = "click_count";
+
+        Scan scan = new Scan();
+        Filter filter = new PrefixFilter(Bytes.toBytes(condition));
+        scan.setFilter(filter);
+
+        ResultScanner rs = table.getScanner(scan);
+        for (Result result : rs) {
+
+            String row = Bytes.toString(result.getRow());
+            Long clickCount = Bytes.toLong(result.getValue(Bytes.toBytes(cf), Bytes.toBytes(qualifier)));
+            if(row.length() > 12) {//因为在写这个个的这一天还有数据是没有分类别之前的
+                Map<String, String> map = new HashMap<>();
+                map.put("time_c", row);//201904171217_130
+                map.put("clickcount", String.valueOf(clickCount));
+                list.add(map);
+            }
+
+        }
+
+        rs.close();
+
+        return list;
+    }
+
 }

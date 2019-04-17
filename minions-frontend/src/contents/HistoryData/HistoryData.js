@@ -56,12 +56,12 @@ class HistoryData extends Component{
                 </Row>
                 <Row>
                     <Col span={8}>
-                        <ClickCountPie date={this.state.selectedDate}/>
+                        <PVChartCard date={this.state.selectedDate}/>
+                        <SevenDaysPVMiniArea date={this.state.selectedDate}/>
 
                     </Col>
                     <Col span={8}>
-                        <PVChartCard date={this.state.selectedDate}/>
-                        <SevenDaysPVMiniArea date={this.state.selectedDate}/>
+                        <ClickCountPie date={this.state.selectedDate}/>
                     </Col>
                     <Col span={8}>
                         <TopReferWebList date={this.state.selectedDate}/>
