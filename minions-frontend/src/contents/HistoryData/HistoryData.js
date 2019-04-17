@@ -9,6 +9,7 @@ import TopReferWebList from "../../components/ReferenceStatistics/TopReferWebLis
 import HistroyDataTitle from "../../components/Titles/HistroyDataTitle";
 import PVTrend from "../../components/PageViews/Trend/PVTrend";
 import SevenDaysPVMiniArea from "../../components/PageViews/7DayData/MiniArea";
+import MonthDataBar from "../../components/PageViews/30DayData/MonthDataBar";
 
 /**
  * HistoryData页布局
@@ -58,6 +59,7 @@ class HistoryData extends Component{
                     <Col span={8}>
                         <PVChartCard date={this.state.selectedDate}/>
                         <SevenDaysPVMiniArea date={this.state.selectedDate}/>
+                        <MonthDataBar date={this.state.selectedDate}/>
 
                     </Col>
                     <Col span={8}>

@@ -202,6 +202,36 @@ public class DataQueryController {
     }
 
     /**
+     * 30天pv数据
+     * @param request
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
+    @GetMapping("getMonthPVDate")
+    private List<MiniAreaDTO> getMonthPVDate(HttpServletRequest request) throws IOException, ParseException {
+
+        List<MiniAreaDTO> res = new ArrayList<>();
+
+        String date = request.getParameter("date");
+
+        for (int i = 30; i >= 0; i--) {
+            if(i == 30){
+                date = dateUtils.dayBefore(date, i);
+            }else
+                date = dateUtils.dayBefore(date, -1);
+            MiniAreaDTO item = new MiniAreaDTO();
+            String formateDate = date.substring(4,6)+"-"+date.substring(6);
+            item.setX(formateDate);
+            item.setY(Math.toIntExact(clickCountDAO.getPageViewsByDate(date)));
+
+            res.add(item);
+        }
+
+        return res;
+    }
+
+    /**
      * 得到当前日期中每隔三十分钟的访问量
      * @param request
      * @return
