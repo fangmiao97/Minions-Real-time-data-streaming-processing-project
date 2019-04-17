@@ -32,7 +32,7 @@ public class MusicInfoDAO implements Serializable {
      */
     public List<Map<String, String>> getSongInfoList() {
 
-        String executeSql = "SELECT * FROM MessageWikiPro.SongInfo";
+        String executeSql = "SELECT * FROM MessageWikiPro.SongInfo ORDER BY RAND()";
 
         List dataList = (ArrayList) jdbcTemplate.query(executeSql,
                 new PreparedStatementSetter() {
