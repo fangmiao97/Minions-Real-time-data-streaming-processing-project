@@ -103,18 +103,11 @@ class PVChartCard extends Component{
                     style={{ borderRadius:'4px 4px 4px 4px'}}>
                     <span>
                         周同比
-                        <Trend flag="up" style={{ marginLeft: 8, color: "rgba(0,0,0,.85)" }}>
                             {this.state.wow}%
-                        </Trend>
                     </span>
                     <span style={{ marginLeft: 16 }}>
                         日环比
-                        <Trend
-                            flag="down"
-                            style={{ marginLeft: 8, color: "rgba(0,0,0,.85)" }}
-                        >
                             {this.state.dod}%
-                        </Trend>
                     </span>
                 </ChartCard>
             </div>

@@ -70,7 +70,7 @@ class SongPlayDataTable extends Component{
     render() {
         return (
             <div style={{marginLeft:'16px', marginTop:'16px'}}>
-                <Card title="今日歌曲播放一览" style={{width:600}}>
+                <Card title="今日歌曲播放一览">
                     <Table columns={columns} dataSource={this.state.dataSource} size="middle" />
                 </Card>
             </div>

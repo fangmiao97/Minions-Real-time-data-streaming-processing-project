@@ -32,20 +32,19 @@ class Overview extends Component{
                 <Row>
                     <OverviewTitle/>
                 </Row>
-            <Row>
-                <Col span={8}>
-                    <ClickCountPie date={this.state.date}/>
-
-                </Col>
-                <Col span={8}>
-                    <PVChartCard date={this.state.date}/>
-                    <SevenDaysPVMiniArea date={this.state.date}/>
-                    <PVTrend date={this.state.date}/>
-                </Col>
-                <Col span={8}>
-                    <TopReferWebList date={this.state.date}/>
-                </Col>
-            </Row>
+                <Row>
+                    <Col span={8}>
+                        <PVChartCard date={this.state.date}/>
+                        <SevenDaysPVMiniArea date={this.state.date}/>
+                        <PVTrend date={this.state.date}/>
+                    </Col>
+                    <Col span={8}>
+                        <ClickCountPie date={this.state.date}/>
+                    </Col>
+                    <Col span={8}>
+                        <TopReferWebList date={this.state.date}/>
+                    </Col>
+                </Row>
             </div>
         );
     }

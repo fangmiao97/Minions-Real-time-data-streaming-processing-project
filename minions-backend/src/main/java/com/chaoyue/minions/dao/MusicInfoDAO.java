@@ -26,6 +26,10 @@ public class MusicInfoDAO implements Serializable {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     * 返回所有歌曲信息
+     * @return
+     */
     public List<Map<String, String>> getSongInfoList() {
 
         String executeSql = "SELECT * FROM MessageWikiPro.SongInfo";
@@ -64,13 +68,13 @@ public class MusicInfoDAO implements Serializable {
     }
 
     /**
-     * 根据songID查询 歌名 歌手 专辑
+     * 根据songID查询 歌名 歌手 专辑 类型
      * @param songID
      * @return
      */
     public List<Map<String, String>> getSongInfoforTable(String songID) {
 
-        String executeSql = "select name, artist, album from MessageWikiPro.SongInfo where idSongInfo = " + songID;
+        String executeSql = "select name, artist, album, genre from MessageWikiPro.SongInfo where idSongInfo = " + songID;
 
         List dataList = (ArrayList) jdbcTemplate.query(executeSql,
                 new PreparedStatementSetter() {
@@ -85,6 +89,7 @@ public class MusicInfoDAO implements Serializable {
                         u.put("name", rs.getString("name"));
                         u.put("artist", rs.getString("artist"));
                         u.put("album", rs.getString("album"));
+                        u.put("genre", rs.getString("genre"));
                         return u;
                     }
                 }));

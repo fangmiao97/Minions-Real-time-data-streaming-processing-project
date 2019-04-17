@@ -107,7 +107,10 @@ public class DataQueryController {
         double wow = 0;
         if (sevenDayBeforePV != 0){
             wow = (todayPV * 1.0 / sevenDayBeforePV) * 100;
-            res.put("wow", String.valueOf(wow).substring(0,6));
+            if(String.valueOf(wow).length() > 6)
+                res.put("wow", String.valueOf(wow).substring(0,6));
+            else
+                res.put("wow", String.valueOf(wow));
         }else
             res.put("wow", String.valueOf(wow));
 
@@ -118,7 +121,10 @@ public class DataQueryController {
         double dod = 0;
         if (yesterdayPV != 0){
             dod = (todayPV * 1.0 / yesterdayPV) * 100;
-            res.put("dod", String.valueOf(dod).substring(0,6));
+            if(String.valueOf(dod).length() > 6)
+                res.put("dod", String.valueOf(dod).substring(0,6));
+            else
+                res.put("dod", String.valueOf(dod));
         }else
             res.put("dod", String.valueOf(dod));
 

@@ -63,7 +63,6 @@ class RecentlyPlayedSongCard extends Component{
         return (
             <div style={{marginLeft:'16px', marginTop:'16px'}}>
                 <Card
-                    style={{width:400}}
                 title="近一小时播放TOP歌曲">
                     <Table columns={columns} dataSource={this.state.dataSource} size="middle" />
                 </Card>

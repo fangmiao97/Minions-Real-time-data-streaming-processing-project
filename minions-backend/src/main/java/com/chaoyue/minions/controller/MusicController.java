@@ -1,9 +1,6 @@
 package com.chaoyue.minions.controller;
 
-import com.chaoyue.minions.DTO.RecentlySongPlayTableDTO;
-import com.chaoyue.minions.DTO.SongDataTableDTO;
-import com.chaoyue.minions.DTO.SongInfoDTO;
-import com.chaoyue.minions.DTO.TagCloudDTO;
+import com.chaoyue.minions.DTO.*;
 import com.chaoyue.minions.dao.DailySongsPlayDAO;
 import com.chaoyue.minions.dao.MusicInfoDAO;
 import com.chaoyue.minions.dao.RecentlySongPLayDAO;
@@ -17,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +32,9 @@ public class MusicController {
     @Autowired
     private RecentlySongPLayDAO recentlySongPLayDAO;
 
+    /**
+     * 返回所有歌曲信息
+     */
     @GetMapping("SongInfoList")
     public List<SongInfoDTO> getSongInfoList() {
 
@@ -147,4 +148,40 @@ public class MusicController {
         return list;
     }
 
+    /**
+     * 返回类型播放南丁格尔玫瑰环的数据
+     * @param request
+     * @return
+     */
+    @GetMapping("getSongGenreData")
+    public  List<GenreRoseDTO> getSongGenreData(HttpServletRequest request) throws IOException {
+        String date = request.getParameter("date");
+
+        List<GenreRoseDTO> list = new ArrayList<>();
+
+        Map<String, Integer> map = new HashMap<>();
+        Map<String, Long> maps = dailySongsPlayDAO.querySongsPlayDataByDate(date);
+
+        for(Map.Entry<String, Long> entry : maps.entrySet()) {
+            List<Map<String, String>> songInfo = musicInfoDAO.getSongInfoforTable(entry.getKey().substring(9));
+            String genre = songInfo.get(0).get("genre");
+
+            if (!map.containsKey(genre)) {
+                map.put(genre, Math.toIntExact(entry.getValue()));
+            } else {
+                int count = map.get(genre) + Math.toIntExact(entry.getValue());
+                map.replace(genre, count);
+            }
+
+        }
+
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            GenreRoseDTO item = new GenreRoseDTO();
+            item.setGenre(entry.getKey());
+            item.setCount(entry.getValue());
+            list.add(item);
+        }
+
+        return list;
+    }
 }

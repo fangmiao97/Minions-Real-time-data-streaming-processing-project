@@ -47,8 +47,7 @@ class TodayHitSongsCloud extends Component{
         return (
             <div style={{marginLeft:'16px', marginTop:'16px'}}>
                 <Card
-                title="今日热门歌曲TOP10"
-                style={{width:400}}>
+                title="今日热门歌曲TOP10">
                     <TagCloud data={this.state.tags} height={200}/>
                 </Card>
             </div>
