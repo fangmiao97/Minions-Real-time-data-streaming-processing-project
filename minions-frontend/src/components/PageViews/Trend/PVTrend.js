@@ -57,7 +57,7 @@ class PVTrend extends Component{
             () => {
                 this.getPVTrend(this.state.date)
             },
-            1800000
+            100000
         )
     }
 
