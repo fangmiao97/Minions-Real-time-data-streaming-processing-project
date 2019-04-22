@@ -69,7 +69,7 @@ class GenreInfoRose extends Component{
                         />
                         <Geom
                             type="interval"
-                            color={['genre',['#44cb73','#f0637b','#985fe5', '#4dc9cc', '#fcd347', '#43a1ff']]}
+                            color={['genre',['#44cb73','#f0637b','#985fe5', '#4dc9cc', '#fcd347', '#43a1ff', '#fe2d55']]}
                             position="genre*count"
                             style={{
                                 lineWidth: 1,

@@ -10,18 +10,18 @@ const columns = [
         key: 'name'
     },
     {
-        title: '今日收藏数',
-        dataIndex: 'like_count',
+        title: '今日评论数',
+        dataIndex: 'comment_count',
         key: 'value',
-        sorter: (a, b) => a.like_count - b.like_count,
+        sorter: (a, b) => a.comment_count - b.comment_count,
         defaultSortOrder: 'descend',
     }
 ];
 
 /**
- * 歌曲收藏数据
+ * 歌曲评论数据，不和收藏数据放在一起因为可能有收藏但是没有评论
  */
-class SongLikeDataTable extends Component{
+class SongCommentDataTable extends Component{
 
     constructor(props) {
         super(props);
@@ -33,9 +33,9 @@ class SongLikeDataTable extends Component{
 
     }
 
-    getSonglikedDataByDate(date) {
+    getSongCommentDataByDate(date) {
         let _this = this;
-        axios.get(Utils.defaultURIdefaultURI + "/getSongLikedDataForTable",{
+        axios.get(Utils.defaultURIdefaultURI + "/getSongCommentDataForTable",{
             params:{
                 date: date
             }
@@ -47,13 +47,13 @@ class SongLikeDataTable extends Component{
     }
 
     componentWillMount() {
-        this.getSonglikedDataByDate(this.state.date)
+        this.getSongCommentDataByDate(this.state.date)
     }
 
     componentDidMount() {
         this.timer = setInterval(
             () => {
-                this.getSonglikedDataByDate(this.state.date)
+                this.getSongCommentDataByDate(this.state.date)
             },
             10000
         )
@@ -63,7 +63,7 @@ class SongLikeDataTable extends Component{
     render() {
         return (
             <div style={{marginTop:'16px', marginLeft:'16px'}}>
-                <Card title="今日歌曲收藏量一览">
+                <Card title="今日歌曲评论数一览">
                     <Table columns={columns} dataSource={this.state.dataSource} size="small" />
                 </Card>
             </div>
@@ -71,4 +71,4 @@ class SongLikeDataTable extends Component{
     }
 }
 
-export default SongLikeDataTable;
+export default SongCommentDataTable;

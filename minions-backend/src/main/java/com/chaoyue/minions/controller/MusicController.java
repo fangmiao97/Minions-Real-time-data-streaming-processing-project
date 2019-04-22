@@ -1,10 +1,7 @@
 package com.chaoyue.minions.controller;
 
 import com.chaoyue.minions.DTO.*;
-import com.chaoyue.minions.dao.DailySongsLikeDAO;
-import com.chaoyue.minions.dao.DailySongsPlayDAO;
-import com.chaoyue.minions.dao.MusicInfoDAO;
-import com.chaoyue.minions.dao.RecentlySongPlayDAO;
+import com.chaoyue.minions.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,6 +31,9 @@ public class MusicController {
 
     @Autowired
     private DailySongsLikeDAO dailySongsLikeDAO;
+
+    @Autowired
+    private DailySongsCommentDAO dailySongsCommentDAO;
 
     /**
      * 返回所有歌曲信息
@@ -188,8 +188,14 @@ public class MusicController {
         return list;
     }
 
+    /**
+     * 获取歌曲收藏数据
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @GetMapping("getSongLikedDataForTable")
-    public List<SongDataTableDTO> getSongLikedDataForTable(HttpServletRequest request) throws IOException {
+    public List<SongDataTableDTO> getSongLikeDataForTable(HttpServletRequest request) throws IOException {
 
         String date = request.getParameter("date");
 
@@ -200,6 +206,34 @@ public class MusicController {
             SongDataTableDTO item = new SongDataTableDTO();
             item.setKey(Integer.parseInt(entry.getKey().substring(9)));
             item.setLike_count(Math.toIntExact(entry.getValue()));
+
+            List<Map<String, String>> songInfo = musicInfoDAO.getSongInfoforTable(entry.getKey().substring(9));
+            item.setName(songInfo.get(0).get("name"));
+
+            list.add(item);
+        }
+
+        return list;
+    }
+
+    /**
+     * 获取歌曲评论数量信息
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @GetMapping("getSongCommentDataForTable")
+    public List<SongDataTableDTO> getSongCommentDataForTable(HttpServletRequest request) throws IOException {
+
+        String date = request.getParameter("date");
+
+        List<SongDataTableDTO> list = new ArrayList<>();
+        Map<String, Long> maps = dailySongsCommentDAO.querySongsCommentDataByDate(date);
+
+        for (Map.Entry<String, Long> entry : maps.entrySet()) {
+            SongDataTableDTO item = new SongDataTableDTO();
+            item.setKey(Integer.parseInt(entry.getKey().substring(9)));
+            item.setComment_count(Math.toIntExact(entry.getValue()));
 
             List<Map<String, String>> songInfo = musicInfoDAO.getSongInfoforTable(entry.getKey().substring(9));
             item.setName(songInfo.get(0).get("name"));

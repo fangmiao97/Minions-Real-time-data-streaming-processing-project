@@ -11,6 +11,7 @@ public class SongDataTableDTO {
     private String album;
     private int play_count;
     private int like_count;
+    private int comment_count;
 
     public int getKey() {
         return key;
@@ -58,5 +59,13 @@ public class SongDataTableDTO {
 
     public void setLike_count(int like_count) {
         this.like_count = like_count;
+    }
+
+    public int getComment_count() {
+        return comment_count;
+    }
+
+    public void setComment_count(int comment_count) {
+        this.comment_count = comment_count;
     }
 }

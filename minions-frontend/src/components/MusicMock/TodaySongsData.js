@@ -8,6 +8,7 @@ import RecentlyPlayedSongCard from "./RecentlyPlayedSongCard";
 import { Row, Col, Icon, Tooltip } from 'antd';
 import GenreInfoRose from "./GenreInfoRose";
 import SongLikeDataTable from "./SongLikeDataTable";
+import SongCommentDataTable from "./SongCommentDataTable";
 
 
 const dateFormat = 'YYYYMMDD';
@@ -45,6 +46,7 @@ class TodaySongsData extends Component{
                     <Col span={8}>
                         <TodayHitSongsCloud date={this.state.date}/>
                         <SongLikeDataTable date={this.state.date}/>
+                        <SongCommentDataTable date={this.state.date}/>
                     </Col>
                 </Row>
             </div>
