@@ -33,19 +33,59 @@ class MockSongComponent extends Component{
     }
 
 
-    clickTrySecond(songInfo){
+    //播放歌曲记录
+    songplay(songInfo){
 
         openNotification(songInfo);
 
-        axios.get(Utils.defaultURIdefaultURI+"/logtest2", {
+        axios.get(Utils.defaultURIdefaultURI+"/actionLogger", {
             params:{
-                K_topic: 'hello_ladygaga_topic',
-                operation : 'SongPlay',
+                K_topic: 'minions_songplay',
                 songId: songInfo.songID
             }
         }).then(function (response) {
             if (response.data === 1){
                 message.success('添加歌曲播放记录成功');
+                console.log("日志记录成功")
+            } else console.log("日志记录错误")
+        }).catch(function (error) {
+            console.log(error)
+        })
+    }
+
+    //收藏歌曲
+    likesong(songInfo){
+
+        //openNotification(songInfo);
+
+        axios.get(Utils.defaultURIdefaultURI+"/actionLogger", {
+            params:{
+                K_topic: 'minions_songlike',
+                songId: songInfo.songID
+            }
+        }).then(function (response) {
+            if (response.data === 1){
+                message.success('收藏成功');
+                console.log("日志记录成功")
+            } else console.log("日志记录错误")
+        }).catch(function (error) {
+            console.log(error)
+        })
+    }
+
+    //评论歌曲
+    comment(songInfo){
+
+        //openNotification(songInfo);
+
+        axios.get(Utils.defaultURIdefaultURI+"/actionLogger", {
+            params:{
+                K_topic: 'minions_songcomment',
+                songId: songInfo.songID
+            }
+        }).then(function (response) {
+            if (response.data === 1){
+                message.success('评论成功');
                 console.log("日志记录成功")
             } else console.log("日志记录错误")
         }).catch(function (error) {
@@ -66,13 +106,13 @@ class MockSongComponent extends Component{
                   actions=
                       {
                           [
-                              <Button shape="circle" ghost={true} onClick={this.clickTrySecond.bind(this, songInfo)}>
+                              <Button shape="circle" ghost={true} onClick={this.songplay.bind(this, songInfo)}>
                                   <Icon type="right" style={{ color:"#fe2d55"}}/>
                               </Button>,
-                              <Button shape="circle" ghost={true} onClick={this.clickTrySecond.bind(this, songInfo)}>
+                              <Button shape="circle" ghost={true} onClick={this.likesong.bind(this, songInfo)}>
                                   <Icon type="heart" theme="twoTone" />
                               </Button>,
-                              <Button shape="circle" ghost={true} onClick={this.clickTrySecond.bind(this, songInfo)}>
+                              <Button shape="circle" ghost={true} onClick={this.comment.bind(this, songInfo)}>
                                   <Icon type="edit" theme="twoTone" />
                               </Button>
                           ]

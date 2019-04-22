@@ -1,10 +1,10 @@
 package com.chaoyue.minions.controller;
 
 import com.chaoyue.minions.DTO.*;
+import com.chaoyue.minions.dao.DailySongsLikeDAO;
 import com.chaoyue.minions.dao.DailySongsPlayDAO;
 import com.chaoyue.minions.dao.MusicInfoDAO;
-import com.chaoyue.minions.dao.RecentlySongPLayDAO;
-import com.jcraft.jsch.MAC;
+import com.chaoyue.minions.dao.RecentlySongPlayDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,7 +30,10 @@ public class MusicController {
     private DailySongsPlayDAO dailySongsPlayDAO;
 
     @Autowired
-    private RecentlySongPLayDAO recentlySongPLayDAO;
+    private RecentlySongPlayDAO recentlySongPLayDAO;
+
+    @Autowired
+    private DailySongsLikeDAO dailySongsLikeDAO;
 
     /**
      * 返回所有歌曲信息
@@ -179,6 +182,28 @@ public class MusicController {
             GenreRoseDTO item = new GenreRoseDTO();
             item.setGenre(entry.getKey());
             item.setCount(entry.getValue());
+            list.add(item);
+        }
+
+        return list;
+    }
+
+    @GetMapping("getSongLikedDataForTable")
+    public List<SongDataTableDTO> getSongLikedDataForTable(HttpServletRequest request) throws IOException {
+
+        String date = request.getParameter("date");
+
+        List<SongDataTableDTO> list = new ArrayList<>();
+        Map<String, Long> maps = dailySongsLikeDAO.querySongsLikeDataByDate(date);
+
+        for (Map.Entry<String, Long> entry : maps.entrySet()) {
+            SongDataTableDTO item = new SongDataTableDTO();
+            item.setKey(Integer.parseInt(entry.getKey().substring(9)));
+            item.setLike_count(Math.toIntExact(entry.getValue()));
+
+            List<Map<String, String>> songInfo = musicInfoDAO.getSongInfoforTable(entry.getKey().substring(9));
+            item.setName(songInfo.get(0).get("name"));
+
             list.add(item);
         }
 

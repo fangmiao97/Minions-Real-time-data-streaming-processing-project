@@ -16,41 +16,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * recently_play_song_hour的DAO
+ * daily_songlike的DAO
  */
 @Component
-public class RecentlySongPLayDAO {
+public class DailySongsLikeDAO {
 
     @Autowired
     private HBaseUtils hBaseUtils;
 
-    private static String tablename = "recently_play_song_hour";
+    private static String tableName = "daily_songlike";
 
-    /**
-     * 获取当日当时最近1小时内播放歌曲的情况
-     * @param condition
-     * @return
-     */
-    public Map<String, Long> queryRecentlyPlaySong(String condition) throws IOException {
+    public Map<String, Long> querySongsLikeDataByDate(String date) throws IOException {
+        Map<String, Long> map = new HashMap<>();
 
-        Map<String, Long> res = new HashMap<>();
-
-        HTable table = hBaseUtils.getTable(tablename);
+        HTable table = hBaseUtils.getTable(tableName);
 
         String cf = "info";
-        String qualifier = "play_count";
+        String qualifier = "like_count";
 
         Scan scan = new Scan();
-        Filter filter = new PrefixFilter(Bytes.toBytes(condition));
+        Filter filter = new PrefixFilter(Bytes.toBytes(date));
         scan.setFilter(filter);
 
         ResultScanner scanner = table.getScanner(scan);
         for (Result result: scanner) {
             String rowKey = Bytes.toString(result.getRow());
-            long playCount = Bytes.toLong(result.getValue(Bytes.toBytes(cf), Bytes.toBytes(qualifier)));
-            res.put(rowKey, playCount);
+            long likeCount = Bytes.toLong(result.getValue(Bytes.toBytes(cf), Bytes.toBytes(qualifier)));
+            map.put(rowKey, likeCount);
         }
 
-        return res;
+        return map;
     }
+
 }

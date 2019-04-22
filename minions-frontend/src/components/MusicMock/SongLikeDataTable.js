@@ -10,25 +10,18 @@ const columns = [
         key: 'name'
     },
     {
-        title:'歌手',
-        dataIndex: 'artist',
-        key: 'artist'
-    },
-    {
-        title:'专辑',
-        dataIndex: 'album',
-        key: 'album'
-    },
-    {
-        title: '今日播放数',
-        dataIndex: 'play_count',
+        title: '今日评论数',
+        dataIndex: 'like_count',
         key: 'value',
-        sorter: (a, b) => a.play_count - b.play_count,
+        sorter: (a, b) => a.like_count - b.like_count,
         defaultSortOrder: 'descend',
     }
 ];
 
-class SongPlayDataTable extends Component{
+/**
+ * 歌曲收藏数据
+ */
+class SongLikeDataTable extends Component{
 
     constructor(props) {
         super(props);
@@ -40,9 +33,9 @@ class SongPlayDataTable extends Component{
 
     }
 
-    getSongPlayedDataByDate(date) {
+    getSonglikedDataByDate(date) {
         let _this = this;
-        axios.get(Utils.defaultURIdefaultURI + "/getSongPlayedDataForTable",{
+        axios.get(Utils.defaultURIdefaultURI + "/getSongLikedDataForTable",{
             params:{
                 date: date
             }
@@ -54,13 +47,13 @@ class SongPlayDataTable extends Component{
     }
 
     componentWillMount() {
-        this.getSongPlayedDataByDate(this.state.date)
+        this.getSonglikedDataByDate(this.state.date)
     }
 
     componentDidMount() {
         this.timer = setInterval(
             () => {
-                this.getSongPlayedDataByDate(this.state.date)
+                this.getSonglikedDataByDate(this.state.date)
             },
             10000
         )
@@ -69,13 +62,13 @@ class SongPlayDataTable extends Component{
 
     render() {
         return (
-            <div style={{marginTop:'16px'}}>
-                <Card title="今日歌曲播放一览">
-                    <Table columns={columns} dataSource={this.state.dataSource} size="middle" />
+            <div style={{marginTop:'16px', marginLeft:'16px'}}>
+                <Card title="今日歌曲收藏量一览">
+                    <Table columns={columns} dataSource={this.state.dataSource} size="small" />
                 </Card>
             </div>
         );
     }
 }
 
-export default SongPlayDataTable;
+export default SongLikeDataTable;

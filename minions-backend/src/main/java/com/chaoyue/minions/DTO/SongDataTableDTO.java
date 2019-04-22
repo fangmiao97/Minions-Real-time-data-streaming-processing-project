@@ -1,7 +1,7 @@
 package com.chaoyue.minions.DTO;
 
 /**
- * 歌曲播放信息TABLE DTO
+ * 歌曲播放收藏等多维度信息TABLE DTO
  */
 public class SongDataTableDTO {
 
@@ -10,6 +10,7 @@ public class SongDataTableDTO {
     private String artist;
     private String album;
     private int play_count;
+    private int like_count;
 
     public int getKey() {
         return key;
@@ -49,5 +50,13 @@ public class SongDataTableDTO {
 
     public void setAlbum(String album) {
         this.album = album;
+    }
+
+    public int getLike_count() {
+        return like_count;
+    }
+
+    public void setLike_count(int like_count) {
+        this.like_count = like_count;
     }
 }

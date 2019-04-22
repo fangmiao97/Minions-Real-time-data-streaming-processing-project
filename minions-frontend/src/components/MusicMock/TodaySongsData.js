@@ -7,6 +7,7 @@ import SevenDaysPVMiniArea from "../PageViews/7DayData/MiniArea";
 import RecentlyPlayedSongCard from "./RecentlyPlayedSongCard";
 import { Row, Col, Icon, Tooltip } from 'antd';
 import GenreInfoRose from "./GenreInfoRose";
+import SongLikeDataTable from "./SongLikeDataTable";
 
 
 const dateFormat = 'YYYYMMDD';
@@ -35,14 +36,15 @@ class TodaySongsData extends Component{
                 </div>
                 <Row>
                     <Col span={8}>
-                        <TodayHitSongsCloud date={this.state.date}/>
-                        <GenreInfoRose date={this.state.date}/>
-                    </Col>
-                    <Col span={8}>
                         <SongPlayDataTable date={this.state.date}/>
                     </Col>
                     <Col span={8}>
                         <RecentlyPlayedSongCard date={this.state.date}/>
+                        <GenreInfoRose date={this.state.date}/>
+                    </Col>
+                    <Col span={8}>
+                        <TodayHitSongsCloud date={this.state.date}/>
+                        <SongLikeDataTable date={this.state.date}/>
                     </Col>
                 </Row>
             </div>
