@@ -57,22 +57,11 @@ class Homepage extends Component{
                             <span>历史数据查询</span>
                             <Link to='/history'/>
                         </Menu.Item>
-                        <Menu.Item key="2">
-                            <Icon type="fund" />
-                            <span>页面浏览分析</span>
-                            <Link to='/browseanalysis'/>
-                        </Menu.Item>
                         <Menu.Item key="3">
                             <Icon type="radar-chart" />
                             <span>页面行为分析Mock</span>
                             <Link to='/browseanalysis'/>
                         </Menu.Item>
-                        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-                            <Menu.Item key="11">Option 1</Menu.Item>
-                            <Menu.Item key="12">Option 2</Menu.Item>
-                            <Menu.Item key="13">Option 3</Menu.Item>
-                            <Menu.Item key="14">Option 4</Menu.Item>
-                        </SubMenu>
                     </Menu>
                 </Sider>
                 <Layout style={{background:'#eeeef2'}}>
