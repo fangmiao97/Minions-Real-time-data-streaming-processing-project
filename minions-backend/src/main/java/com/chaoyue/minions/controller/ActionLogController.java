@@ -24,8 +24,6 @@ public class ActionLogController {
 
         int res = 0;
 
-        System.out.println(request);
-
         String k_topic = request.getParameter("K_topic");
         String songID = request.getParameter("songId");
 
