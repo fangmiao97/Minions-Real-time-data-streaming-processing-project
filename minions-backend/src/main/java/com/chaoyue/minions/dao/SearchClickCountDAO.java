@@ -27,7 +27,12 @@ public class SearchClickCountDAO {
     private static String tablename = "imooc_course_search_clickcount";
 
 
-
+    /**
+     * 来源网站统计
+     * @param date
+     * @return
+     * @throws IOException
+     */
     public Map<String, Long> getTopReferWebsList(String date) throws IOException {
 
         Map<String, Long> res = new HashMap<>();
@@ -52,6 +57,7 @@ public class SearchClickCountDAO {
 
             String[] tmp = rowKey.split("_");
 
+            //因为表中是按 日期_来源网站_类目编号为维度进行统计的，所以需要对相同的来源网站进行聚合
             if(res.containsKey(tmp[1])) {
                 long clickNum = res.get(tmp[1]) + clickCount;
                 res.replace(tmp[1], clickNum);
