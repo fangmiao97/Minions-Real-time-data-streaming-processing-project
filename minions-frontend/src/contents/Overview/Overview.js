@@ -9,6 +9,7 @@ import OverviewTitle from "../../components/Titles/OverviewTitle";
 import SevenDaysPVMiniArea from "../../components/PageViews/7DayData/MiniArea";
 import PVTrend from "../../components/PageViews/Trend/PVTrend";
 import CategoriesPVTrend from "../../components/PageViews/Trend/CategoriesPVTrend";
+import TodayHitSearchWordsCloud from "../../components/ReferenceStatistics/TodayHitSearchWordsCloud";
 
 /**
  * Overview页布局
@@ -45,6 +46,7 @@ class Overview extends Component{
                     </Col>
                     <Col span={8}>
                         <TopReferWebList date={this.state.date}/>
+                        <TodayHitSearchWordsCloud/>
                     </Col>
                 </Row>
             </div>
