@@ -10,7 +10,7 @@ Author Fang Miao IOT-Engineering 2019 HFUT
 
 学习Spark的同时完成了关于RDD的论文翻译：[【翻译】弹性分布式数据集：基于内存的集群计算的容错性抽象 ](https://fangmiao97.github.io/2019/04/13/tanslate-Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction%E2%80%93for-In-Memory-Cluster-Computing/)
 
-Spark Streaming程序在：
+Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue-s-Sparktrain)
 
 # display
 
@@ -28,7 +28,7 @@ Spark Streaming程序在：
 
 历史数据查询提供选择日期的组件，可以查看所选日期当天的相关数据。提供30天PV比较，可以看到更长时间区间内网站浏览量的变化，通过这些变化的观察可以对网站的运营策略进行适当的调整。
 
-![](https://puui.qpic.cn/fans_admin/0/3_1359855289_1562043443136/0)
+![](https://puui.qpic.cn/fans_admin/0/3_1359855289_156204344 sru3136/0)
 
 * 音乐网站用户行为模拟
 
@@ -41,3 +41,7 @@ Spark Streaming程序在：
 页面行为日志数据的实时处理分析展示页面。展示的内容包括，今日歌曲播放一览、近一小时最热播放歌曲、播放歌曲类型统计、今日加权热门歌曲、今日歌曲评论和收藏统计。今日歌曲播放一览展示今日实时的歌曲播放量统计。近一小时最热播放歌曲展示一小时窗口时间的歌曲播放量排行，是前一个统计维度的子集。歌曲播放类型统计使用南丁格尔玫瑰花环展示实时歌曲播放不同类型数量的统计，这个维度即是对实时流处理中得到的分析结果进行更高一级的抽象，在可视化的后端将歌曲播放量与歌曲资源进行连接操作得到歌曲类型统计。今日加权热门歌曲通过将三中行为的统计量进行加权，得到热门歌曲，加权权值为播放0.5：收藏1：评论0.8。另外两个展示的是实时歌曲收藏量与评论量。
 
 ![](https://puui.qpic.cn/fans_admin/0/3_1359855289_1562043549502/0)
+
+# archticture
+
+![](https://pic.superbed.cn/item/5cf20d46451253d1785969df.jpg)
