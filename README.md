@@ -58,7 +58,7 @@ Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue
 
 历史数据查询提供选择日期的组件，可以查看所选日期当天的相关数据。提供30天PV比较，可以看到更长时间区间内网站浏览量的变化，通过这些变化的观察可以对网站的运营策略进行适当的调整。
 
-![](https://puui.qpic.cn/fans_admin/0/3_1359855289_156204344 sru3136/0)
+![](https://puui.qpic.cn/fans_admin/0/3_1359855289_1562043443136/0)
 
 * 音乐网站用户行为模拟
 
