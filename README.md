@@ -12,9 +12,21 @@ Author Fang Miao IOT-Engineering 2019 HFUT
 
 Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue-s-Sparktrain)
 
+
+# archticture
+
+![](https://puui.qpic.cn/fans_admin/0/3_519860944_1563288307680/0)
+
 # display
 
-![](https://raw.githubusercontent.com/fangmiao97/Minions-Real-time-data-streaming-processing-project/master/%E5%9B%BE%E7%89%871.gif)
+* 整体架构
+
+![](https://cy-pic.kuaizhan.com/g3/8f/55/f8f1-6b9f-41e8-8f58-9d4a936fa07321)
+
+* 日志产生模块
+
+![](https://cy-pic.kuaizhan.com/g3/ee/53/62d5-e60d-46b9-ba52-18b6498eae4f33)
+
 
 * 今日数据概览
 
@@ -56,6 +68,3 @@ Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue
 
 ![](https://puui.qpic.cn/fans_admin/0/3_1359855289_1562043549502/0)
 
-# archticture
-
-![](https://pic.superbed.cn/item/5cf20d46451253d1785969df.jpg)
