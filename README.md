@@ -37,6 +37,7 @@ Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue
 
 # display
 
+<img src="https://cy-pic.kuaizhan.com/g3/82/f3/20a7-e8be-43e5-b863-d2db76b5028a63">
 
 * 今日数据概览
 
@@ -50,9 +51,7 @@ Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue
 
 类目访问趋势展示了各类目的今日访问趋势，是前面两个维度的横向和纵向细化，帮助网站运营人员从细节查看网站数据。杂项数据包括来源网站统计和热搜词云，这些展示的是从搜索引擎过来的流量的分析，根据搜索引擎的热搜词，可以帮助网站进行SEO（搜索引擎优化），提高网站排名。
 
-![](https://puui.qpic.cn/fans_admin/0/3_1359855289_1562043107824/0)
-
-![](https://puui.qpic.cn/fans_admin/0/3_1359855289_1562043414146/0)
+<img src="https://cy-pic.kuaizhan.com/g3/90/25/c1e3-2c33-4109-93c7-e0db6736839859">
 
 * 历史数据查询
 
