@@ -14,6 +14,7 @@ Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue
 
 
 # archticture
+（图片加载不出来，请多刷新几次）
 
 * 整体架构
 
