@@ -22,19 +22,19 @@ Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue
 
 * 日志产生模块
 
-<img src="https://cy-pic.kuaizhan.com/g3/ee/53/62d5-e60d-46b9-ba52-18b6498eae4f33" width="40%">
+<img src="https://p.pstatp.com/origin/fe95000115d770fee71d" width="40%">
 
 * 日志采集与传输模块
 
-<img src="https://cy-pic.kuaizhan.com/g3/37/b6/eb79-685e-4b03-9352-da4deec360ae81" width="40%">
+<img src="https://p.pstatp.com/origin/ff650000be9c7f9bb8de" width="40%">
 
 * 日志处理分析持久化模块
 
-<img src="https://cy-pic.kuaizhan.com/g3/1d/7f/3374-5fec-49f4-b455-523f565b73f422" width="40%">
+<img src="https://p.pstatp.com/origin/fe800001840d4bed222e" width="40%">
 
 * 分析结果可视化模块
  
-<img src="https://cy-pic.kuaizhan.com/g3/ba/fd/1f3c-0356-4aee-a99a-24a69276e77740" width="40%">
+<img src="https://p.pstatp.com/origin/ff260001293173d88192" width="40%">
 
 # display
 
