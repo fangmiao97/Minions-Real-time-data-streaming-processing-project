@@ -3,6 +3,8 @@ Graduation Design Works🌟, using Flume/Kafka/Spark Streaming/React/Ant Design 
 
 Author Fang Miao IOT-Engineering 2019 HFUT
 
+This projcet designs a real-time stream processing of website logs system based on Spark Streaming. It performs real-time collection, transmission, processing, analysis, persistence and visualization for two types of logs: universal web browsing logs and web page behavior logs. This project has completed the following functions: 1) Using Flume to collect log data, solving the problem of distributed log collection and aggregation, and diverting the log at the same time; 2) Using message queue Kafka to solve a large number of log data transmission problems, which providing real-time log data source to the downstream application to process and analysis data; 3) using Spark Streaming to perform real-time processing and analysis of various types of log data, achieving the capability of second-level processing and phase data processing, and persisting the analysis result data to HBase; 4)Visualization of the results of the analysis using a development model with front and rear separation. The system realizes the real-time integration of a large number of scattered log data, completes the analysis and calculation, and finally displays information from various dimensions.
+
 # context
 这是我的本科毕业设计，是一个基于Spark Streaming的音乐网页日志实时流处理，是一个简单的初步的分布式数据处理项目。我在毕业设计的过程中主要学习了运用Scala来使用Spark，以及像Flume、Kafka等工具。
 
@@ -10,7 +12,7 @@ Author Fang Miao IOT-Engineering 2019 HFUT
 
 学习Spark的同时完成了关于RDD的论文翻译：[【翻译】弹性分布式数据集：基于内存的集群计算的容错性抽象 ](https://fangmiao97.github.io/2019/04/13/tanslate-Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction%E2%80%93for-In-Memory-Cluster-Computing/)
 
-Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue-s-Sparktrain)
+Spark Streaming程序在：[Chaoyue-Spark](https://github.com/fangmiao97/Chaoyue-s-Sparktrain)(Chaoyue是之前的花名哈）
 
 
 # archticture
