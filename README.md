@@ -1,4 +1,4 @@
-# Minions-Real-time-data-streaming-processing-project
+# Minions - A Real-time data streaming processing project
 Graduation Design Works🌟, using Flume/Kafka/Spark Streaming/React/Ant Design (Pro).
 
 Author Fang Miao IOT-Engineering 2019 HFUT
